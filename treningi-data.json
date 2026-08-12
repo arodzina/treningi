@@ -1,1 +1,968 @@
-{"updatedAt": "2026-08-06T13:36:00.000Z", "data": {"runs": [{"id": "mruyobih5q76", "date": "2026-07-17", "type": "easy", "distance": 4.5, "duration": 38.56666666666667, "hr": 147, "cadence": 147, "notes": "spoko, troche cieplo"}, {"id": "mrvvy3uizm1r", "date": "2026-07-21", "type": "easy", "distance": 5, "duration": 42.2, "hr": 153, "cadence": 143, "notes": "Pierwszy dłuższy bieg na bieżni. Mimo trudności z utrzymaniem kadencji i wyższego tętna przy spokojnym tempie, udało mi się przebiec całe 5 km. Tempo było równe (7:59–8:19 min/km), a średnia długość kroku wyniosła 85 cm. Dobry trening i cenne pierwsze doświadczenie. 343 kalorie"}, {"id": "ms7ulm55emp8", "date": "2026-07-27", "type": "easy", "distance": 11, "duration": 92.73333333333333, "hr": 146, "cadence": 145, "notes": "Trasa: z domu wzdłuż Wisłoka i z powrotem\nDystans: 11 km\n\nTo był spokojny bieg (easy) po przerwie. Początek był wymagający – trudno było złapać rytm, oddech nie układał się najlepiej i nogi były ciężkie, dlatego tempo było wolniejsze niż zwykle. Z każdym kolejnym kilometrem czułam się jednak coraz lepiej. Organizm stopniowo się rozkręcał, oddech się uspokoił, a bieg stawał się coraz bardziej płynny. Końcówka była już wyraźnie swobodniejsza.\n\nTempo na poszczególnych kilometrach:\n\n1 km – 8:26/km\n2 km – 9:02/km\n3 km – 8:56/km\n4 km – 8:49/km\n5 km – 8:47/km\n6 km – 8:14/km\n7 km – 8:09/km\n8 km – 8:10/km\n9 km – 8:08/km\n10 km – 7:59/km\n11 km – 8:04/km\n\nWnioski: Mimo trudnego początku organizm dobrze zareagował na spokojne tempo. Każdy kolejny kilometr był łatwiejszy, co pokazuje, że potrzebowałam po prostu więcej czasu na rozruszanie się po przerwie."}, {"id": "msa6i5degzrw", "date": "2026-07-30", "type": "tempo", "distance": 6.5, "duration": 54.666666666666664, "hr": 153, "cadence": 145, "notes": "Plan treningowy: 2 km rozgrzewki, 3x8 minut biegu w tempie około 7:20/km (przedzielone 2-minutowym truchtem), a na koniec spokojne schłodzenie.\n\nCała jednostka została zrealizowana wzorowo i zgodnie z tymi założeniami, co idealnie odzwierciedlają zapisane parametry. Wykres tętna wyraźnie ukazuje trzy szczyty odpowiadające mocniejszym akcentom, podczas których tętno rosło, osiągając w ostatniej, najbardziej wymagającej serii maksymalnie 172 ud./min. W czasie truchtu i rozgrzewki serce pracowało spokojniej, co potwierdza przewaga czasu spędzonego w strefie aerobowej nad strefą beztlenową. Pomiary tempa pokazują, że pierwsze dwa kilometry (8:20/km i 9:10/km) stanowiły odpowiednio wolną rozgrzewkę przygotowującą mięśnie do wysiłku. Podczas części głównej kolejne kilometry zamykały się w okolicach 8:00/km – biorąc pod uwagę, że w te odcinki wplecione były 2-minutowe przerwy na trucht obniżające średnią, oraz fakt, że najszybsze odnotowane tempo wyniosło 6:10/km, można śmiało stwierdzić, że same 8-minutowe interwały przebiegły bardzo blisko wyznaczonego celu 7:20/km. Dopełnieniem całości jest stabilna kadencja ze średnią 145 kroków na minutę, która utrzymywała się na równym poziomie podczas szybszych bloków, zaliczając widoczne spadki wyłącznie w momentach przejścia do regeneracyjnego truchtu. Szósty kilometr w tempie 8:40/km i sama końcówka to z kolei książkowe schłodzenie organizmu kończące ten bardzo udany i kontrolowany trening."}, {"id": "msd3v07bl10l", "date": "2026-08-02", "type": "long-run", "distance": 12, "duration": 99.63333333333334, "hr": 145, "cadence": 147, "notes": "Dystans: 12,01 km\nCzas całkowity: 1:39:38\nŚrednie tempo: 8'18\"/km\nŚrednie tętno: 145 ud./min (Max: 168 ud./min)\nŚrednia kadencja: 147 kroków/min\nWarunki: Niedziela wieczór (20:36), 24°C\nTrasa: Rzeszów (Nowe Miasto, tereny nad rzeką)\n\nNotatki z treningu:\nBieg zrealizowany na \"zmęczonych nogach\" po wczorajszej jednostce. Na pierwszych kilometrach lekkie trudności ze złapaniem oddechu, ale sytuacja dość szybko się ustabilizowała. Zdecydowana większość dystansu (87 minut) przebiegnięta w komfortowej strefie tlenowej. Kryzys i wyraźne opadnięcie z sił pojawiło się po 70. minucie – tętno mocno podskoczyło w górę (osiągając wtedy wartość maksymalną), a nogi odmawiały posłuszeństwa, co wymusiło zwolnienie na ostatnim kilometrze. Mimo ciężkiej końcówki, to bardzo dobrze zrealizowany trening budujący bazę tlenową na zmęczeniu."}], "strength": [{"id": "mrnl5bqy4wor", "date": "2026-07-15", "session": "siła-a", "exercises": [{"name": "hip-thrust", "label": "Hip Thrust (sztanga)", "sets": [{"weight": 50, "reps": 6, "rir": 5}, {"weight": 60, "reps": 6, "rir": 2}, {"weight": 60, "reps": 6, "rir": 2}, {"weight": 60, "reps": 6, "rir": 0}]}, {"name": "rdl", "label": "RDL (jednonóż/obunóż)", "sets": [{"weight": 40, "reps": 8, "rir": 2}, {"weight": 40, "reps": 8, "rir": 2}, {"weight": 40, "reps": 8, "rir": 1}, {"weight": 40, "reps": 6, "rir": 1}]}, {"name": "kickback", "label": "Kickback (wykopy nogi)", "sets": [{"weight": 32, "reps": 10, "rir": 5}, {"weight": 40, "reps": 10, "rir": 2}, {"weight": 40, "reps": 10, "rir": 0}]}, {"name": "gorilla-row", "label": "Gorilla row", "sets": [{"weight": 14, "reps": 8, "rir": 2}, {"weight": 14, "reps": 8, "rir": 1}, {"weight": 14, "reps": 8, "rir": 0}, {"weight": 14, "reps": 8, "rir": 0}]}, {"name": "landmine-press", "label": "Landmine Press", "sets": [{"weight": 5, "reps": 6, "rir": 2}, {"weight": 5, "reps": 6, "rir": 0}, {"weight": 5, "reps": 6, "rir": 0}]}]}, {"id": "ms7upzckpmdd", "date": "2026-07-25", "session": "siła-b", "exercises": [{"name": "bułgary", "label": "Bułgary", "sets": [{"weight": 20, "reps": 8, "rir": 2}, {"weight": 20, "reps": 8, "rir": 2}, {"weight": 20, "reps": 8, "rir": 2}]}, {"name": "łydki-smith", "label": "Łydki na maszynie Smitha", "sets": [{"weight": 20, "reps": 10, "rir": 5}, {"weight": 30, "reps": 15, "rir": 2}, {"weight": 30, "reps": 15, "rir": 0}]}, {"name": "wyciskanie-hantli-klatka", "label": "Wyciskanie hantli na klatkę (płaska)", "sets": [{"weight": 10, "reps": 8, "rir": 5}, {"weight": 10, "reps": 8, "rir": 5}, {"weight": 12, "reps": 8, "rir": 3}, {"weight": 12, "reps": 8, "rir": 2}]}, {"name": "rozpiętki", "label": "Rozpiętki (brama/kabel)", "sets": [{"weight": 13, "reps": 8, "rir": 2}, {"weight": 13, "reps": 8, "rir": 0}, {"weight": 13, "reps": 8, "rir": 0}]}, {"name": "spider-curl", "label": "Spider curl (biceps)", "sets": [{"weight": 13, "reps": 8, "rir": 3}, {"weight": 13, "reps": 8, "rir": 0}, {"weight": 13, "reps": 6, "rir": 0}]}, {"name": "triceps-maszyna", "label": "Triceps na maszynie", "sets": [{"weight": 17, "reps": 8, "rir": 2}, {"weight": 17, "reps": 6, "rir": 0}, {"weight": 17, "reps": 6, "rir": 0}]}]}, {"id": "ms7usspdsz7e", "date": "2026-07-29", "session": "siła-a", "exercises": [{"name": "hip-thrust", "label": "Hip Thrust (sztanga)", "sets": [{"weight": 60, "reps": 6, "rir": 2}, {"weight": 70, "reps": 6, "rir": 2}, {"weight": 70, "reps": 6, "rir": 1}, {"weight": 70, "reps": 6, "rir": 0}, {"weight": 70, "reps": 6, "rir": 0}]}, {"name": "rdl", "label": "RDL (jednonóż/obunóż)", "sets": [{"weight": 40, "reps": 8, "rir": 2}, {"weight": 40, "reps": 8, "rir": 2}, {"weight": 40, "reps": 8, "rir": 2}]}, {"name": "kickback", "label": "Kickback (wykopy nogi)", "sets": [{"weight": 13, "reps": 12, "rir": 2}, {"weight": 13, "reps": 12, "rir": 2}]}, {"name": "gorilla-row", "label": "Gorilla row", "sets": [{"weight": 16, "reps": 8, "rir": 2}, {"weight": 16, "reps": 8, "rir": 0}, {"weight": 16, "reps": 8, "rir": 0}]}, {"name": "wiosłowanie-wyciąg", "label": "Wiosłowanie na wyciągu siedząc", "sets": [{"weight": 28, "reps": 8, "rir": 5}, {"weight": 32, "reps": 8, "rir": 2}, {"weight": 32, "reps": 8, "rir": 2}]}, {"name": "landmine-press", "label": "Landmine Press", "sets": [{"weight": 5, "reps": 6, "rir": 0}, {"weight": 5, "reps": 6, "rir": 0}, {"weight": 5, "reps": 6, "rir": 0}]}, {"name": "face-pull", "label": "Face pull / odwrotne rozpiętki", "sets": [{"weight": 17.5, "reps": 10, "rir": 2}, {"weight": 21.5, "reps": 10, "rir": 2}]}]}, {"id": "msd3zpuaus5p", "date": "2026-08-01", "session": "siła-b", "exercises": [{"name": "Bułgary", "label": "Bułgary", "sets": [{"weight": 20, "reps": 8, "rir": 2}, {"weight": 20, "reps": 8, "rir": 2}, {"weight": 20, "reps": 8, "rir": 0}]}, {"name": "Łydki na maszynie siedzącej", "label": "Łydki na maszynie siedzącej", "sets": [{"weight": 30, "reps": 10, "rir": 5}, {"weight": 30, "reps": 10, "rir": 3}]}, {"name": "Wyciskanie hantli na klatkę skos", "label": "Wyciskanie hantli na klatkę skos", "sets": [{"weight": 10, "reps": 8, "rir": 5}, {"weight": 12, "reps": 8, "rir": 3}, {"weight": 12, "reps": 8, "rir": 2}, {"weight": 12, "reps": 8, "rir": 1}]}, {"name": "Rozpiętki (brama/kabel)", "label": "Rozpiętki (brama/kabel)", "sets": [{"weight": 13, "reps": 8, "rir": 5}, {"weight": 22, "reps": 8, "rir": 2}, {"weight": 22, "reps": 8, "rir": 3}]}, {"name": "Spider curl (biceps)", "label": "Spider curl (biceps)", "sets": [{"weight": 22, "reps": 10, "rir": 2}, {"weight": 22, "reps": 10, "rir": 1}, {"weight": 22, "reps": 10, "rir": 0}]}, {"name": "Triceps na maszynie - ściąganie linki", "label": "Triceps na maszynie - ściąganie linki", "sets": [{"weight": 13, "reps": 8, "rir": 2}, {"weight": 22, "reps": 8, "rir": 1}, {"weight": 22, "reps": 8, "rir": 0}]}]}, {"id": "msemn2pk1h8d", "date": "2026-08-03", "session": "siła-a", "duration": 70, "calories": 442, "exercises": [{"name": "Hip Thrust (sztanga)", "label": "Hip Thrust (sztanga)", "sets": [{"weight": 60, "reps": 6, "rir": 5}, {"weight": 70, "reps": 6, "rir": 2}, {"weight": 70, "reps": 6, "rir": 2}, {"weight": 70, "reps": 6, "rir": 1}, {"weight": 70, "reps": 6, "rir": 1}]}, {"name": "RDL (jednonóż/obunóż)", "label": "RDL (jednonóż/obunóż)", "sets": [{"weight": 40, "reps": 8, "rir": 2}, {"weight": 40, "reps": 8, "rir": 2}, {"weight": 40, "reps": 8, "rir": 0}, {"weight": 40, "reps": 8, "rir": 0}]}, {"name": "Kickback (wykopy nogi)", "label": "Kickback (wykopy nogi)", "sets": [{"weight": 28, "reps": 10, "rir": 2}, {"weight": 28, "reps": 10, "rir": 2}]}, {"name": "Gorilla row", "label": "Gorilla row", "sets": [{"weight": 16, "reps": 8, "rir": 2}, {"weight": 16, "reps": 8, "rir": 2}, {"weight": 16, "reps": 8, "rir": 0}, {"weight": 16, "reps": 8, "rir": 0}]}, {"name": "Wiosłowanie na wyciągu siedząc", "label": "Wiosłowanie na wyciągu siedząc", "sets": [{"weight": 35, "reps": 8, "rir": 4}, {"weight": 50, "reps": 8, "rir": 3}, {"weight": 50, "reps": 8, "rir": 3}]}, {"name": "Landmine Press", "label": "Landmine Press", "sets": [{"weight": 5, "reps": 6, "rir": 2}, {"weight": 5, "reps": 6, "rir": 2}, {"weight": 5, "reps": 6, "rir": 2}]}, {"name": "Face pull / odwrotne rozpiętki", "label": "Face pull / odwrotne rozpiętki", "sets": [{"weight": 40, "reps": 10, "rir": 4}, {"weight": 40, "reps": 10, "rir": 3}, {"weight": 40, "reps": 10, "rir": 1}]}]}], "foods": [{"id": "msd58lqp86ip", "date": "2026-08-04", "name": "barszcz czerwony", "protein": 9, "fat": 9, "carbs": 14, "calories": 170}, {"id": "msd59wof8bhw", "date": "2026-08-04", "name": "banan", "protein": 1.3, "fat": 0.3, "carbs": 27, "calories": 105}, {"id": "msd5cjw7zta9", "date": "2026-08-04", "name": "lody waniliowe", "protein": 4.3, "fat": 6.75, "carbs": 24, "calories": 159}], "updatedAt": "2026-08-06T13:36:00.000Z"}, "nutritionProfile": {"weight": "70", "height": "175", "age": "22"}, "watchTotals": {}, "weeklyPlans": {"1": {"pon": [{"text": "🚫 Pełny odpoczynek", "done": false}], "wt": [{"text": "🌅 Easy <145 bpm", "done": false}], "śr": [{"text": "🧘 Pilates + Easy <145 bpm", "done": false}, {"text": "💪 Siła A", "done": false}], "cz": [{"text": "⚡ Akcent tempowy / progresywny", "done": false}], "pt": [{"text": "💪 Siła B + plyometria", "done": false}], "sob": [{"text": "🚫 Pełen odpoczynek", "done": false}], "ndz": [{"text": "🏃 Long Run", "done": false}]}, "2": {"pon": [{"text": "💪 Siła A", "done": false}], "wt": [{"text": "🌅 Easy <145 bpm", "done": false}], "śr": [{"text": "🧘 Pilates + Easy <145 bpm", "done": false}], "cz": [{"text": "⚡ Akcent tempowy / progresywny", "done": false}], "pt": [{"text": "💪 Siła B + plyometria", "done": false}], "sob": [{"text": "🚫 Pełen odpoczynek", "done": false}], "ndz": [{"text": "🏃 Long Run", "done": false}]}, "3": {"pon": [{"text": "💪 Siła A", "done": false}], "wt": [{"text": "🌅 Easy <145 bpm", "done": false}], "śr": [{"text": "🧘 Pilates + Easy <145 bpm", "done": false}], "cz": [{"text": "⚡ Akcent tempowy / progresywny", "done": false}], "pt": [{"text": "💪 Siła B + plyometria", "done": false}], "sob": [{"text": "🚫 Pełen odpoczynek", "done": false}], "ndz": [{"text": "🏃 Long Run", "done": false}]}}}"🌅 Easy <145 bpm", "done": false}], "śr": [{"text": "🧘 Pilates + Easy <145 bpm", "done": false}], "cz": [{"text": "⚡ Akcent tempowy / progresywny", "done": false}], "pt": [{"text": "💪 Siła B + plyometria", "done": false}], "sob": [{"text": "🚫 Pełen odpoczynek", "done": false}], "ndz": [{"text": "🏃 Long Run", "done": false}]}}}
+{
+  "updatedAt": "2026-08-12T12:20:00.000Z",
+  "data": {
+    "runs": [
+      {
+        "id": "mruyobih5q76",
+        "date": "2026-07-17",
+        "type": "easy",
+        "distance": 4.5,
+        "duration": 38.56666666666667,
+        "hr": 147,
+        "cadence": 147,
+        "notes": "spoko, troche cieplo"
+      },
+      {
+        "id": "mrvvy3uizm1r",
+        "date": "2026-07-21",
+        "type": "easy",
+        "distance": 5,
+        "duration": 42.2,
+        "hr": 153,
+        "cadence": 143,
+        "notes": "Pierwszy dłuższy bieg na bieżni. Mimo trudności z utrzymaniem kadencji i wyższego tętna przy spokojnym tempie, udało mi się przebiec całe 5 km. Tempo było równe (7:59–8:19 min/km), a średnia długość kroku wyniosła 85 cm. Dobry trening i cenne pierwsze doświadczenie. 343 kalorie"
+      },
+      {
+        "id": "ms7ulm55emp8",
+        "date": "2026-07-27",
+        "type": "easy",
+        "distance": 11,
+        "duration": 92.73333333333333,
+        "hr": 146,
+        "cadence": 145,
+        "notes": "Trasa: z domu wzdłuż Wisłoka i z powrotem\nDystans: 11 km\n\nTo był spokojny bieg (easy) po przerwie. Początek był wymagający – trudno było złapać rytm, oddech nie układał się najlepiej i nogi były ciężkie, dlatego tempo było wolniejsze niż zwykle. Z każdym kolejnym kilometrem czułam się jednak coraz lepiej. Organizm stopniowo się rozkręcał, oddech się uspokoił, a bieg stawał się coraz bardziej płynny. Końcówka była już wyraźnie swobodniejsza.\n\nTempo na poszczególnych kilometrach:\n\n1 km – 8:26/km\n2 km – 9:02/km\n3 km – 8:56/km\n4 km – 8:49/km\n5 km – 8:47/km\n6 km – 8:14/km\n7 km – 8:09/km\n8 km – 8:10/km\n9 km – 8:08/km\n10 km – 7:59/km\n11 km – 8:04/km\n\nWnioski: Mimo trudnego początku organizm dobrze zareagował na spokojne tempo. Każdy kolejny kilometr był łatwiejszy, co pokazuje, że potrzebowałam po prostu więcej czasu na rozruszanie się po przerwie."
+      },
+      {
+        "id": "msa6i5degzrw",
+        "date": "2026-07-30",
+        "type": "tempo",
+        "distance": 6.5,
+        "duration": 54.666666666666664,
+        "hr": 153,
+        "cadence": 145,
+        "notes": "Plan treningowy: 2 km rozgrzewki, 3x8 minut biegu w tempie około 7:20/km (przedzielone 2-minutowym truchtem), a na koniec spokojne schłodzenie.\n\nCała jednostka została zrealizowana wzorowo i zgodnie z tymi założeniami, co idealnie odzwierciedlają zapisane parametry. Wykres tętna wyraźnie ukazuje trzy szczyty odpowiadające mocniejszym akcentom, podczas których tętno rosło, osiągając w ostatniej, najbardziej wymagającej serii maksymalnie 172 ud./min. W czasie truchtu i rozgrzewki serce pracowało spokojniej, co potwierdza przewaga czasu spędzonego w strefie aerobowej nad strefą beztlenową. Pomiary tempa pokazują, że pierwsze dwa kilometry (8:20/km i 9:10/km) stanowiły odpowiednio wolną rozgrzewkę przygotowującą mięśnie do wysiłku. Podczas części głównej kolejne kilometry zamykały się w okolicach 8:00/km – biorąc pod uwagę, że w te odcinki wplecione były 2-minutowe przerwy na trucht obniżające średnią, oraz fakt, że najszybsze odnotowane tempo wyniosło 6:10/km, można śmiało stwierdzić, że same 8-minutowe interwały przebiegły bardzo blisko wyznaczonego celu 7:20/km. Dopełnieniem całości jest stabilna kadencja ze średnią 145 kroków na minutę, która utrzymywała się na równym poziomie podczas szybszych bloków, zaliczając widoczne spadki wyłącznie w momentach przejścia do regeneracyjnego truchtu. Szósty kilometr w tempie 8:40/km i sama końcówka to z kolei książkowe schłodzenie organizmu kończące ten bardzo udany i kontrolowany trening."
+      },
+      {
+        "id": "msd3v07bl10l",
+        "date": "2026-08-02",
+        "type": "long-run",
+        "distance": 12,
+        "duration": 99.63333333333334,
+        "hr": 145,
+        "cadence": 147,
+        "notes": "Dystans: 12,01 km\nCzas całkowity: 1:39:38\nŚrednie tempo: 8'18\"/km\nŚrednie tętno: 145 ud./min (Max: 168 ud./min)\nŚrednia kadencja: 147 kroków/min\nWarunki: Niedziela wieczór (20:36), 24°C\nTrasa: Rzeszów (Nowe Miasto, tereny nad rzeką)\n\nNotatki z treningu:\nBieg zrealizowany na \"zmęczonych nogach\" po wczorajszej jednostce. Na pierwszych kilometrach lekkie trudności ze złapaniem oddechu, ale sytuacja dość szybko się ustabilizowała. Zdecydowana większość dystansu (87 minut) przebiegnięta w komfortowej strefie tlenowej. Kryzys i wyraźne opadnięcie z sił pojawiło się po 70. minucie – tętno mocno podskoczyło w górę (osiągając wtedy wartość maksymalną), a nogi odmawiały posłuszeństwa, co wymusiło zwolnienie na ostatnim kilometrze. Mimo ciężkiej końcówki, to bardzo dobrze zrealizowany trening budujący bazę tlenową na zmęczeniu."
+      },
+      {
+        "id": "run_20260811_01",
+        "date": "2026-08-11",
+        "type": "easy",
+        "shoeId": "shoe-1",
+        "distance": 7.01,
+        "duration": 57.1,
+        "hr": 145,
+        "cadence": 149,
+        "calories": 476,
+        "notes": "Bieg na dworze (11.08.2026, 19:28)\n• Dystans: 7,01 km | Czas: 57:06 (tempo śr. 8'09\"/km, najszybszy km 7'47\"/km)\n• Średnie tętno: 145 bpm (max 153 bpm) — bieg w strefie tlenowej Easy\n• Średnia kadencja: 149 spm (max 156 spm)\n• Długość kroku: 82 cm | Łącznie 8553 kroki\n• Międzyczasy km: 1km (8'00\"), 2km (7'54\"), 3km (7'47\"), 4km (8'13\"), 5km (8'42\"), 6km (8'11\"), 7km (8'14\")"
+      }
+    ],
+    "strength": [
+      {
+        "id": "mrnl5bqy4wor",
+        "date": "2026-07-15",
+        "session": "siła-a",
+        "exercises": [
+          {
+            "name": "hip-thrust",
+            "label": "Hip Thrust (sztanga)",
+            "sets": [
+              {
+                "weight": 50,
+                "reps": 6,
+                "rir": 5
+              },
+              {
+                "weight": 60,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 60,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 60,
+                "reps": 6,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "rdl",
+            "label": "RDL (jednonóż/obunóż)",
+            "sets": [
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 1
+              },
+              {
+                "weight": 40,
+                "reps": 6,
+                "rir": 1
+              }
+            ]
+          },
+          {
+            "name": "kickback",
+            "label": "Kickback (wykopy nogi)",
+            "sets": [
+              {
+                "weight": 32,
+                "reps": 10,
+                "rir": 5
+              },
+              {
+                "weight": 40,
+                "reps": 10,
+                "rir": 2
+              },
+              {
+                "weight": 40,
+                "reps": 10,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "gorilla-row",
+            "label": "Gorilla row",
+            "sets": [
+              {
+                "weight": 14,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 14,
+                "reps": 8,
+                "rir": 1
+              },
+              {
+                "weight": 14,
+                "reps": 8,
+                "rir": 0
+              },
+              {
+                "weight": 14,
+                "reps": 8,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "landmine-press",
+            "label": "Landmine Press",
+            "sets": [
+              {
+                "weight": 5,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 5,
+                "reps": 6,
+                "rir": 0
+              },
+              {
+                "weight": 5,
+                "reps": 6,
+                "rir": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ms7upzckpmdd",
+        "date": "2026-07-25",
+        "session": "siła-b",
+        "exercises": [
+          {
+            "name": "bułgary",
+            "label": "Bułgary",
+            "sets": [
+              {
+                "weight": 20,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 20,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 20,
+                "reps": 8,
+                "rir": 2
+              }
+            ]
+          },
+          {
+            "name": "łydki-smith",
+            "label": "Łydki na maszynie Smitha",
+            "sets": [
+              {
+                "weight": 20,
+                "reps": 10,
+                "rir": 5
+              },
+              {
+                "weight": 30,
+                "reps": 15,
+                "rir": 2
+              },
+              {
+                "weight": 30,
+                "reps": 15,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "wyciskanie-hantli-klatka",
+            "label": "Wyciskanie hantli na klatkę (płaska)",
+            "sets": [
+              {
+                "weight": 10,
+                "reps": 8,
+                "rir": 5
+              },
+              {
+                "weight": 10,
+                "reps": 8,
+                "rir": 5
+              },
+              {
+                "weight": 12,
+                "reps": 8,
+                "rir": 3
+              },
+              {
+                "weight": 12,
+                "reps": 8,
+                "rir": 2
+              }
+            ]
+          },
+          {
+            "name": "rozpiętki",
+            "label": "Rozpiętki (brama/kabel)",
+            "sets": [
+              {
+                "weight": 13,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 13,
+                "reps": 8,
+                "rir": 0
+              },
+              {
+                "weight": 13,
+                "reps": 8,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "spider-curl",
+            "label": "Spider curl (biceps)",
+            "sets": [
+              {
+                "weight": 13,
+                "reps": 8,
+                "rir": 3
+              },
+              {
+                "weight": 13,
+                "reps": 8,
+                "rir": 0
+              },
+              {
+                "weight": 13,
+                "reps": 6,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "triceps-maszyna",
+            "label": "Triceps na maszynie",
+            "sets": [
+              {
+                "weight": 17,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 17,
+                "reps": 6,
+                "rir": 0
+              },
+              {
+                "weight": 17,
+                "reps": 6,
+                "rir": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ms7usspdsz7e",
+        "date": "2026-07-29",
+        "session": "siła-a",
+        "exercises": [
+          {
+            "name": "hip-thrust",
+            "label": "Hip Thrust (sztanga)",
+            "sets": [
+              {
+                "weight": 60,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 1
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 0
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "rdl",
+            "label": "RDL (jednonóż/obunóż)",
+            "sets": [
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 2
+              }
+            ]
+          },
+          {
+            "name": "kickback",
+            "label": "Kickback (wykopy nogi)",
+            "sets": [
+              {
+                "weight": 13,
+                "reps": 12,
+                "rir": 2
+              },
+              {
+                "weight": 13,
+                "reps": 12,
+                "rir": 2
+              }
+            ]
+          },
+          {
+            "name": "gorilla-row",
+            "label": "Gorilla row",
+            "sets": [
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 0
+              },
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "wiosłowanie-wyciąg",
+            "label": "Wiosłowanie na wyciągu siedząc",
+            "sets": [
+              {
+                "weight": 28,
+                "reps": 8,
+                "rir": 5
+              },
+              {
+                "weight": 32,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 32,
+                "reps": 8,
+                "rir": 2
+              }
+            ]
+          },
+          {
+            "name": "landmine-press",
+            "label": "Landmine Press",
+            "sets": [
+              {
+                "weight": 5,
+                "reps": 6,
+                "rir": 0
+              },
+              {
+                "weight": 5,
+                "reps": 6,
+                "rir": 0
+              },
+              {
+                "weight": 5,
+                "reps": 6,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "face-pull",
+            "label": "Face pull / odwrotne rozpiętki",
+            "sets": [
+              {
+                "weight": 17.5,
+                "reps": 10,
+                "rir": 2
+              },
+              {
+                "weight": 21.5,
+                "reps": 10,
+                "rir": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "msd3zpuaus5p",
+        "date": "2026-08-01",
+        "session": "siła-b",
+        "exercises": [
+          {
+            "name": "Bułgary",
+            "label": "Bułgary",
+            "sets": [
+              {
+                "weight": 20,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 20,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 20,
+                "reps": 8,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "Łydki na maszynie siedzącej",
+            "label": "Łydki na maszynie siedzącej",
+            "sets": [
+              {
+                "weight": 30,
+                "reps": 10,
+                "rir": 5
+              },
+              {
+                "weight": 30,
+                "reps": 10,
+                "rir": 3
+              }
+            ]
+          },
+          {
+            "name": "Wyciskanie hantli na klatkę skos",
+            "label": "Wyciskanie hantli na klatkę skos",
+            "sets": [
+              {
+                "weight": 10,
+                "reps": 8,
+                "rir": 5
+              },
+              {
+                "weight": 12,
+                "reps": 8,
+                "rir": 3
+              },
+              {
+                "weight": 12,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 12,
+                "reps": 8,
+                "rir": 1
+              }
+            ]
+          },
+          {
+            "name": "Rozpiętki (brama/kabel)",
+            "label": "Rozpiętki (brama/kabel)",
+            "sets": [
+              {
+                "weight": 13,
+                "reps": 8,
+                "rir": 5
+              },
+              {
+                "weight": 22,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 22,
+                "reps": 8,
+                "rir": 3
+              }
+            ]
+          },
+          {
+            "name": "Spider curl (biceps)",
+            "label": "Spider curl (biceps)",
+            "sets": [
+              {
+                "weight": 22,
+                "reps": 10,
+                "rir": 2
+              },
+              {
+                "weight": 22,
+                "reps": 10,
+                "rir": 1
+              },
+              {
+                "weight": 22,
+                "reps": 10,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "Triceps na maszynie - ściąganie linki",
+            "label": "Triceps na maszynie - ściąganie linki",
+            "sets": [
+              {
+                "weight": 13,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 22,
+                "reps": 8,
+                "rir": 1
+              },
+              {
+                "weight": 22,
+                "reps": 8,
+                "rir": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "msemn2pk1h8d",
+        "date": "2026-08-03",
+        "session": "siła-a",
+        "duration": 70,
+        "calories": 442,
+        "exercises": [
+          {
+            "name": "Hip Thrust (sztanga)",
+            "label": "Hip Thrust (sztanga)",
+            "sets": [
+              {
+                "weight": 60,
+                "reps": 6,
+                "rir": 5
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 1
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 1
+              }
+            ]
+          },
+          {
+            "name": "RDL (jednonóż/obunóż)",
+            "label": "RDL (jednonóż/obunóż)",
+            "sets": [
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 0
+              },
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "Kickback (wykopy nogi)",
+            "label": "Kickback (wykopy nogi)",
+            "sets": [
+              {
+                "weight": 28,
+                "reps": 10,
+                "rir": 2
+              },
+              {
+                "weight": 28,
+                "reps": 10,
+                "rir": 2
+              }
+            ]
+          },
+          {
+            "name": "Gorilla row",
+            "label": "Gorilla row",
+            "sets": [
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 0
+              },
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "Wiosłowanie na wyciągu siedząc",
+            "label": "Wiosłowanie na wyciągu siedząc",
+            "sets": [
+              {
+                "weight": 35,
+                "reps": 8,
+                "rir": 4
+              },
+              {
+                "weight": 50,
+                "reps": 8,
+                "rir": 3
+              },
+              {
+                "weight": 50,
+                "reps": 8,
+                "rir": 3
+              }
+            ]
+          },
+          {
+            "name": "Landmine Press",
+            "label": "Landmine Press",
+            "sets": [
+              {
+                "weight": 5,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 5,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 5,
+                "reps": 6,
+                "rir": 2
+              }
+            ]
+          },
+          {
+            "name": "Face pull / odwrotne rozpiętki",
+            "label": "Face pull / odwrotne rozpiętki",
+            "sets": [
+              {
+                "weight": 40,
+                "reps": 10,
+                "rir": 4
+              },
+              {
+                "weight": 40,
+                "reps": 10,
+                "rir": 3
+              },
+              {
+                "weight": 40,
+                "reps": 10,
+                "rir": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "foods": [
+      {
+        "id": "msd58lqp86ip",
+        "date": "2026-08-04",
+        "name": "barszcz czerwony",
+        "protein": 9,
+        "fat": 9,
+        "carbs": 14,
+        "calories": 170
+      },
+      {
+        "id": "msd59wof8bhw",
+        "date": "2026-08-04",
+        "name": "banan",
+        "protein": 1.3,
+        "fat": 0.3,
+        "carbs": 27,
+        "calories": 105
+      },
+      {
+        "id": "msd5cjw7zta9",
+        "date": "2026-08-04",
+        "name": "lody waniliowe",
+        "protein": 4.3,
+        "fat": 6.75,
+        "carbs": 24,
+        "calories": 159
+      }
+    ],
+    "updatedAt": "2026-08-06T13:36:00.000Z"
+  },
+  "nutritionProfile": {
+    "weight": "70",
+    "height": "175",
+    "age": "22"
+  },
+  "watchTotals": {},
+  "weeklyPlans": {
+    "1": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "🧘 Pilates + Easy <145 bpm",
+          "done": false
+        },
+        {
+          "text": "💪 Siła A",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Akcent tempowy / progresywny",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "💪 Siła B + plyometria",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏃 Long Run",
+          "done": false
+        }
+      ]
+    },
+    "2": {
+      "pon": [
+        {
+          "text": "💪 Siła A",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "🧘 Pilates + Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Akcent tempowy / progresywny",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "💪 Siła B + plyometria",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏃 Long Run",
+          "done": false
+        }
+      ]
+    },
+    "3": {
+      "pon": [
+        {
+          "text": "💪 Siła A",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "🧘 Pilates + Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Akcent tempowy / progresywny",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "💪 Siła B + plyometria",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏃 Long Run",
+          "done": false
+        }
+      ]
+    }
+  }
+}

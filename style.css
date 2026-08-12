@@ -656,3 +656,191 @@ input:focus, select:focus, textarea:focus {
   .card h2, .card h3 { color: #000; }
   .plan-table th { background: #eee; color: #000; }
 }
+
+/* ===== Weekly Planner & Week Navigation Styling ===== */
+.week-nav {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.week-nav:hover:not(:disabled) {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  transform: scale(1.08);
+}
+
+.week-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.week-today {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  margin-left: 8px;
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+}
+
+#weekly-planner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.planner-day {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.planner-day.done {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.planner-day.drag-over {
+  border-color: var(--accent);
+  background: rgba(124, 58, 237, 0.15);
+}
+
+.planner-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.planner-day-header .day-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+}
+
+.planner-day-header .day-count {
+  font-size: 0.75rem;
+  background: var(--surface3);
+  color: var(--text-muted);
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.day-tiles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 40px;
+}
+
+.workout-tile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  transition: all 0.2s ease;
+  cursor: grab;
+}
+
+.workout-tile.dragging {
+  opacity: 0.4;
+}
+
+.workout-tile.done {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.workout-tile.done .tile-input {
+  text-decoration: line-through;
+  color: var(--mint);
+  opacity: 0.8;
+}
+
+.tile-drag-handle {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: grab;
+  user-select: none;
+}
+
+.tile-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 0.85rem;
+  padding: 2px 0;
+  font-family: inherit;
+  min-width: 0;
+}
+
+.tile-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.tile-done {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--mint);
+  cursor: pointer;
+}
+
+.tile-delete {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0 2px;
+  transition: color 0.2s ease;
+}
+
+.tile-delete:hover {
+  color: var(--coral);
+}
+
+.btn-add-workout {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed var(--border);
+  color: var(--accent-light);
+  padding: 6px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.btn-add-workout:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: var(--accent);
+  color: #ffffff;
+}
