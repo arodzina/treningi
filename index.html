@@ -224,7 +224,88 @@
         <button type="button" class="btn-secondary" id="export-ics-btn">📅 Pobierz kalendarz (.ics)</button>
       </div>
 
+      <!-- Górny rząd: wzorcowy mikrocykl + plan tygodnia (2 kolumny) -->
+      <div class="plan-top-row">
+        <div class="card">
+          <h2>📅 Mikrocykl tygodniowy</h2>
+          <p class="plan-note" style="margin-top:0">Wzorzec — na prawo edytujesz plan na bieżący tydzień</p>
+          <table class="plan-table">
+            <thead>
+              <tr><th>Dzień</th><th>Sesja</th><th>Uwagi</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Pon</td><td>🚫 Pełny odpoczynek</td><td>Regeneracja po long runie — kluczowe okno</td></tr>
+              <tr><td>Wt</td><td>🌅 Easy &lt;145 bpm<br>🌙 Siła A (ciężka)</td><td>min. 6–8h odstępu rano–wieczór; ~36–42h bufora od LR</td></tr>
+              <tr><td>Śr</td><td>🧘 Pilates + Easy &lt;145 bpm</td><td>Mobilność + tlenowo</td></tr>
+              <tr><td>Cz</td><td>⚡ Akcent tempowy / progresywny</td><td>Jedyny dzień bez limitu HR</td></tr>
+              <tr><td>Pt</td><td>💪 Siła B (lekka) + plyometria</td><td>Minimalny DOMS — chroni long run</td></tr>
+              <tr><td>Sob</td><td>🚫 Pełen odpoczynek</td><td>—</td></tr>
+              <tr><td>Ndz</td><td>🏃 Long Run (z regułą HR i węglowodanami)</td><td>Kluczowa sesja tygodnia</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h2>📝 Plan na ten tydzień</h2>
+          <p class="plan-note" style="margin-top:0">Tydzień <span id="planner-week-num">—</span> · <span id="planner-week-range"></span></p>
+          <div id="weekly-planner"></div>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <button type="button" class="btn-primary" id="save-week-plan">💾 Zapisz plan tygodnia</button>
+            <button type="button" class="btn-secondary" id="reset-week-plan">↩ Wzorzec</button>
+          </div>
+        </div>
+      </div>
+
       <div class="plan-grid">
+        <!-- Siła A -->
+        <div class="card">
+          <h2>🏋️ Siła A (Wtorek, wieczorem) — Dół Ciała + Plecy/Barki</h2>
+          <p class="plan-note">Najcięższa jednostka tygodnia. ~36–42h po LR, min. 6–8h po porannym Easy.</p>
+          <h3>Rozgrzewka i aktywacja (8–10 min)</h3>
+          <ul class="plan-list">
+            <li>Monster Walk z gumą nad kolanami: 2 serie × 12 kroków w każdą stronę</li>
+            <li>Clamshells (muszelki) z gumą: 2 serie × 15 powtórzeń na stronę</li>
+            <li>2 ćwiczenia plyometryczne submaksymalne (pogo hops, low skipping)</li>
+          </ul>
+          <h3>Część główna — dół ciała</h3>
+          <ul class="plan-list">
+            <li><strong>Hip Thrust ze sztangą</strong> — 5 × 6, ~80 kg, RIR 2</li>
+            <li><strong>RDL (jednonóż / obunóż)</strong> — 4 × 8</li>
+            <li><strong>Kickback (wykopy nogi)</strong> — 3 × 12–15 na nogę</li>
+          </ul>
+          <h3>Część główna — plecy/barki</h3>
+          <ul class="plan-list">
+            <li><strong>Wiosłowanie sztangą nachwytem</strong> — 3 × 8</li>
+            <li><strong>Gorilla row</strong> — 3 × 8 na stronę</li>
+            <li><strong>Wiosłowanie na wyciągu siedząc</strong> — 3 × 10</li>
+            <li><strong>Landmine Press</strong> — 3 × 6</li>
+            <li><strong>Face pull / odwrotne rozpiętki</strong> — 2 × 12–15</li>
+          </ul>
+        </div>
+
+        <!-- Siła B -->
+        <div class="card">
+          <h2>🏋️ Siła B (Piątek) — Dół Ciała + Klatka/Ramiona</h2>
+          <p class="plan-note">Bez bilateralnego ciężkiego przysiadu — priorytetem ochrona jakości niedzielnego LR.</p>
+          <h3>Rozgrzewka i mobilność (8–10 min)</h3>
+          <ul class="plan-list">
+            <li>Koci grzbiet / pies z głową w dół: 10 płynnych przejść</li>
+            <li>Wykroki rotacyjne (Spiderman lunge): 5 powt. na nogę</li>
+          </ul>
+          <h3>Część główna — dół ciała</h3>
+          <ul class="plan-list">
+            <li><strong>Bułgary</strong> — 3 × 8–10 na nogę, RIR 2–3</li>
+            <li><strong>Łydki na maszynie Smitha</strong> — 3 × 15</li>
+          </ul>
+          <h3>Część główna — klatka/ramiona</h3>
+          <ul class="plan-list">
+            <li><strong>Wyciskanie hantli na klatkę</strong> — 3 × 8–10</li>
+            <li><strong>Rozpiętki (brama)</strong> — 3 × 10–12</li>
+            <li><strong>Spider curl (biceps)</strong> — 2 × 10–12</li>
+            <li><strong>Triceps na maszynie</strong> — 2 × 10–12</li>
+          </ul>
+        </div>
+
         <!-- Race Split Calculator -->
         <div class="card">
           <h2>⏱️ Kalkulator Międzyczasów i Tempa (21 km)</h2>
@@ -281,87 +362,6 @@
               <!-- Wypełniane JS -->
             </div>
           </div>
-        </div>
-
-        <!-- Górny rząd: wzorcowy mikrocykl + plan tygodnia -->
-        <div class="plan-top-row">
-          <div class="card">
-            <h2>📅 Mikrocykl tygodniowy</h2>
-            <p class="plan-note" style="margin-top:0">Wzorzec — na prawo edytujesz plan na bieżący tydzień</p>
-            <table class="plan-table">
-              <thead>
-                <tr><th>Dzień</th><th>Sesja</th><th>Uwagi</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Pon</td><td>🚫 Pełny odpoczynek</td><td>Regeneracja po long runie — kluczowe okno</td></tr>
-                <tr><td>Wt</td><td>🌅 Easy &lt;145 bpm<br>🌙 Siła A (ciężka)</td><td>min. 6–8h odstępu rano–wieczór; ~36–42h bufora od LR</td></tr>
-                <tr><td>Śr</td><td>🧘 Pilates + Easy &lt;145 bpm</td><td>Mobilność + tlenowo</td></tr>
-                <tr><td>Cz</td><td>⚡ Akcent tempowy / progresywny</td><td>Jedyny dzień bez limitu HR</td></tr>
-                <tr><td>Pt</td><td>💪 Siła B (lekka) + plyometria</td><td>Minimalny DOMS — chroni long run</td></tr>
-                <tr><td>Sob</td><td>🚫 Pełen odpoczynek</td><td>—</td></tr>
-                <tr><td>Ndz</td><td>🏃 Long Run (z regułą HR i węglowodanami)</td><td>Kluczowa sesja tygodnia</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="card">
-            <h2>📝 Plan na ten tydzień</h2>
-            <p class="plan-note" style="margin-top:0">Tydzień <span id="planner-week-num">—</span> · <span id="planner-week-range"></span></p>
-            <div id="weekly-planner"></div>
-            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-              <button type="button" class="btn-primary" id="save-week-plan">💾 Zapisz plan tygodnia</button>
-              <button type="button" class="btn-secondary" id="reset-week-plan">↩ Wzorzec</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Siła A -->
-        <div class="card">
-          <h2>🏋️ Siła A (Wtorek, wieczorem) — Dół Ciała + Plecy/Barki</h2>
-          <p class="plan-note">Najcięższa jednostka tygodnia. ~36–42h po LR, min. 6–8h po porannym Easy.</p>
-          <h3>Rozgrzewka i aktywacja (8–10 min)</h3>
-          <ul class="plan-list">
-            <li>Monster Walk z gumą nad kolanami: 2 serie × 12 kroków w każdą stronę</li>
-            <li>Clamshells (muszelki) z gumą: 2 serie × 15 powtórzeń na stronę</li>
-            <li>2 ćwiczenia plyometryczne submaksymalne (pogo hops, low skipping)</li>
-          </ul>
-          <h3>Część główna — dół ciała</h3>
-          <ul class="plan-list">
-            <li><strong>Hip Thrust ze sztangą</strong> — 5 × 6, ~80 kg, RIR 2</li>
-            <li><strong>RDL (jednonóż / obunóż)</strong> — 4 × 8</li>
-            <li><strong>Kickback (wykopy nogi)</strong> — 3 × 12–15 na nogę</li>
-          </ul>
-          <h3>Część główna — plecy/barki</h3>
-          <ul class="plan-list">
-            <li><strong>Wiosłowanie sztangą nachwytem</strong> — 3 × 8</li>
-            <li><strong>Gorilla row</strong> — 3 × 8 na stronę</li>
-            <li><strong>Wiosłowanie na wyciągu siedząc</strong> — 3 × 10</li>
-            <li><strong>Landmine Press</strong> — 3 × 6</li>
-            <li><strong>Face pull / odwrotne rozpiętki</strong> — 2 × 12–15</li>
-          </ul>
-        </div>
-
-        <!-- Siła B -->
-        <div class="card">
-          <h2>🏋️ Siła B (Piątek) — Dół Ciała + Klatka/Ramiona</h2>
-          <p class="plan-note">Bez bilateralnego ciężkiego przysiadu — priorytetem ochrona jakości niedzielnego LR.</p>
-          <h3>Rozgrzewka i mobilność (8–10 min)</h3>
-          <ul class="plan-list">
-            <li>Koci grzbiet / pies z głową w dół: 10 płynnych przejść</li>
-            <li>Wykroki rotacyjne (Spiderman lunge): 5 powt. na nogę</li>
-          </ul>
-          <h3>Część główna — dół ciała</h3>
-          <ul class="plan-list">
-            <li><strong>Bułgary</strong> — 3 × 8–10 na nogę, RIR 2–3</li>
-            <li><strong>Łydki na maszynie Smitha</strong> — 3 × 15</li>
-          </ul>
-          <h3>Część główna — klatka/ramiona</h3>
-          <ul class="plan-list">
-            <li><strong>Wyciskanie hantli na klatkę</strong> — 3 × 8–10</li>
-            <li><strong>Rozpiętki (brama)</strong> — 3 × 10–12</li>
-            <li><strong>Spider curl (biceps)</strong> — 2 × 10–12</li>
-            <li><strong>Triceps na maszynie</strong> — 2 × 10–12</li>
-          </ul>
         </div>
 
         <!-- Progresja long run -->
