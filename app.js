@@ -1095,13 +1095,34 @@ function setDashboardWeek(w) {
   renderWeeklyPlanner(currentWeek);
 }
 
+function changeWeek(delta) {
+  if (delta === 0) {
+    setDashboardWeek(null);
+  } else {
+    const cur = getDashboardWeek();
+    setDashboardWeek(Math.max(0, Math.min(12, cur + delta)));
+  }
+}
+window.changeWeek = changeWeek;
+
 function updateWeekNav(week) {
   const prev = document.getElementById('week-prev');
   const next = document.getElementById('week-next');
   const today = document.getElementById('week-today');
-  if (prev) prev.disabled = week <= 0;
-  if (next) next.disabled = week >= 12;
-  if (today) today.style.display = dashboardWeek === null ? 'none' : 'inline-block';
+  if (prev) {
+    prev.disabled = week <= 0;
+    prev.style.opacity = week <= 0 ? '0.3' : '1';
+    prev.style.pointerEvents = week <= 0 ? 'none' : 'auto';
+  }
+  if (next) {
+    next.disabled = week >= 12;
+    next.style.opacity = week >= 12 ? '0.3' : '1';
+    next.style.pointerEvents = week >= 12 ? 'none' : 'auto';
+  }
+  if (today) {
+    const isCurrent = dashboardWeek === null || dashboardWeek === getCurrentWeek();
+    today.style.display = isCurrent ? 'none' : 'inline-flex';
+  }
 }
 
 function renderDashboard() {

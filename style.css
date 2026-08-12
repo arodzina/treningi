@@ -658,27 +658,58 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ===== Weekly Planner & Week Navigation Styling ===== */
-.week-nav {
+.stats-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stats-header-row h3 {
+  margin-bottom: 0;
+}
+
+.week-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background: var(--surface2);
   border: 1px solid var(--border);
-  color: var(--text);
-  padding: 4px 12px;
+  padding: 6px 14px;
   border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: 1rem;
+}
+
+.week-selector #current-week {
   font-weight: 700;
-  transition: all 0.2s ease;
-  user-select: none;
+  font-size: 0.98rem;
+  color: #ffffff;
+  min-width: 140px;
+  text-align: center;
+}
+
+.week-nav {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s ease;
+  user-select: none;
 }
 
 .week-nav:hover:not(:disabled) {
   background: var(--accent);
   color: #ffffff;
   border-color: var(--accent);
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 .week-nav:disabled {
@@ -689,7 +720,7 @@ input:focus, select:focus, textarea:focus {
 .week-today {
   font-size: 0.8rem;
   padding: 4px 10px;
-  margin-left: 8px;
+  margin-left: 4px;
   background: var(--accent-gradient);
   color: #fff;
   border: none;

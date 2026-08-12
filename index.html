@@ -38,12 +38,15 @@
     <section id="view-dashboard" class="view active">
       <div class="dashboard-grid">
         <div class="card stats-card">
-          <h3>📅 Podsumowanie tygodnia
-            <button type="button" class="week-nav" id="week-prev" title="Poprzedni tydzień (←)">◀</button>
-            <span id="current-week">—</span>
-            <button type="button" class="week-nav" id="week-next" title="Następny tydzień (→)">▶</button>
-            <button type="button" class="btn-secondary week-today" id="week-today" style="display:none">Dziś</button>
-          </h3>
+          <div class="stats-header-row">
+            <h3>📅 Podsumowanie tygodnia</h3>
+            <div class="week-selector">
+              <button type="button" class="week-nav" id="week-prev" onclick="changeWeek(-1)" title="Poprzedni tydzień (←)">◀</button>
+              <span id="current-week">—</span>
+              <button type="button" class="week-nav" id="week-next" onclick="changeWeek(1)" title="Następny tydzień (→)">▶</button>
+              <button type="button" class="btn-secondary week-today" id="week-today" onclick="changeWeek(0)" style="display:none">Dziś</button>
+            </div>
+          </div>
           <div class="stats-row">
             <div class="stat stat-runs">
               <span class="stat-icon">🏃</span>
