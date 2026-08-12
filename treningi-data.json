@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T12:20:00.000Z",
+  "updatedAt": "2026-08-12T12:57:00.000Z",
   "data": {
     "runs": [
       {
@@ -51,6 +51,18 @@
         "hr": 145,
         "cadence": 147,
         "notes": "Dystans: 12,01 km\nCzas całkowity: 1:39:38\nŚrednie tempo: 8'18\"/km\nŚrednie tętno: 145 ud./min (Max: 168 ud./min)\nŚrednia kadencja: 147 kroków/min\nWarunki: Niedziela wieczór (20:36), 24°C\nTrasa: Rzeszów (Nowe Miasto, tereny nad rzeką)\n\nNotatki z treningu:\nBieg zrealizowany na \"zmęczonych nogach\" po wczorajszej jednostce. Na pierwszych kilometrach lekkie trudności ze złapaniem oddechu, ale sytuacja dość szybko się ustabilizowała. Zdecydowana większość dystansu (87 minut) przebiegnięta w komfortowej strefie tlenowej. Kryzys i wyraźne opadnięcie z sił pojawiło się po 70. minucie – tętno mocno podskoczyło w górę (osiągając wtedy wartość maksymalną), a nogi odmawiały posłuszeństwa, co wymusiło zwolnienie na ostatnim kilometrze. Mimo ciężkiej końcówki, to bardzo dobrze zrealizowany trening budujący bazę tlenową na zmęczeniu."
+      },
+      {
+        "id": "run_20260804_01",
+        "date": "2026-08-04",
+        "type": "easy",
+        "shoeId": "shoe-1",
+        "distance": 6.03,
+        "duration": 50.98,
+        "hr": 144,
+        "cadence": 151,
+        "calories": 416,
+        "notes": "Bieg na dworze (04.08.2026, 20:23)\n• Dystans: 6,03 km | Czas: 50:59 (tempo śr. 8'27\"/km, najszybszy km 8'02\"/km)\n• Średnie tętno: 144 bpm (max 154 bpm) — bieg w strefie tlenowej Easy <145 bpm\n• Średnia kadencja: 151 spm (max 162 spm)\n• Długość kroku: 78 cm | Łącznie 7715 kroków\n• Międzyczasy km: 1km (8'58\"), 2km (8'22\"), 3km (8'22\"), 4km (8'41\"), 5km (8'17\"), 6km (8'02\")"
       },
       {
         "id": "run_20260811_01",
