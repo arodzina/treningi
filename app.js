@@ -963,31 +963,6 @@ function attachPlannerEvents(week) {
 }
 
 function attachTileEvents(week, tile) {
-  const cb = tile.querySelector('.tile-done');
-  if (cb) {
-    cb.addEventListener('change', () => {
-      if (cb.checked) tile.classList.add('done');
-      else tile.classList.remove('done');
-      updateDayDoneState(tile.closest('.planner-day'));
-      saveAllPlannerData(week);
-    });
-  }
-  const delBtn = tile.querySelector('.tile-delete');
-  if (delBtn) {
-    delBtn.addEventListener('click', () => {
-      const dayEl = tile.closest('.planner-day');
-      tile.remove();
-      updateDayCount(dayEl);
-      updateDayDoneState(dayEl);
-      saveAllPlannerData(week);
-    });
-  }
-  const input = tile.querySelector('.tile-input');
-  if (input) {
-    input.addEventListener('change', () => saveAllPlannerData(week));
-    input.addEventListener('blur', () => saveAllPlannerData(week));
-  }
-}
   // Drag events
   tile.addEventListener('dragstart', (e) => {
     const day = tile.dataset.day;
@@ -1010,6 +985,7 @@ function attachTileEvents(week, tile) {
       if (cb.checked) tile.classList.add('done');
       else tile.classList.remove('done');
       updateDayDoneState(tile.closest('.planner-day'));
+      saveAllPlannerData(week);
     });
   }
 
@@ -1021,7 +997,15 @@ function attachTileEvents(week, tile) {
       tile.remove();
       updateDayCount(dayEl);
       updateDayDoneState(dayEl);
+      saveAllPlannerData(week);
     });
+  }
+
+  // Text input
+  const input = tile.querySelector('.tile-input');
+  if (input) {
+    input.addEventListener('change', () => saveAllPlannerData(week));
+    input.addEventListener('blur', () => saveAllPlannerData(week));
   }
 }
 
