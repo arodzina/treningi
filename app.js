@@ -180,6 +180,19 @@ document.addEventListener('DOMContentLoaded', () => {
   setupBackup();
   setupSyncGuide();
   setupWeeklyPlanner();
+
+  // Nowe moduły
+  updateCountdownTimer();
+  setInterval(updateCountdownTimer, 1000);
+  ensureDefaultShoes();
+  renderShoeTracker();
+  populateShoeSelect();
+  setupSplitCalculator();
+  setupFuelingPlanner();
+  setupFitatuCloning();
+  renderStrengthPRs();
+  setupPrintAndICS();
+
   // Migracja: zmiana daty posiłków z 2026-08-03 na 2026-08-04 w lokalnym storage
   if (Array.isArray(data.foods)) {
     let changed = false;
@@ -400,6 +413,7 @@ function setupRunForm() {
         id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
       date: document.getElementById('run-date').value,
       type: document.getElementById('run-type').value,
+      shoeId: document.getElementById('run-shoe') ? document.getElementById('run-shoe').value : '',
       distance: parseFloat(document.getElementById('run-distance').value) || 0,
       duration: (parseFloat(document.getElementById('run-minutes').value) || 0) + (parseFloat(document.getElementById('run-seconds').value) || 0) / 60,
       hr: parseInt(document.getElementById('run-hr').value) || null,
@@ -407,6 +421,15 @@ function setupRunForm() {
       calories: parseInt(document.getElementById('run-calories').value) || null,
       notes: document.getElementById('run-notes').value.trim(),
     };
+    
+    // Dopisz dystans do wybranych butów
+    if (entry.shoeId && data.shoes) {
+      const shoe = data.shoes.find(s => s.id === entry.shoeId);
+      if (shoe) {
+        shoe.mileage = Math.round((shoe.mileage + entry.distance) * 10) / 10;
+      }
+    }
+
     const editId = document.getElementById('run-edit-id').value;
     if (editId) {
       const idx = data.runs.findIndex(r => r.id === editId);
@@ -425,6 +448,8 @@ function setupRunForm() {
     document.getElementById('run-cancel-edit').style.display = 'none';
     renderDashboard();
     renderHistory();
+    populateShoeSelect();
+    renderShoeTracker();
     // Switch to dashboard
       document.querySelector('[data-view="dashboard"]').click();
     } catch(err) {
@@ -1096,6 +1121,10 @@ function renderDashboard() {
 
   // Charts
   renderCharts();
+
+  // Shoe Tracker & Strength PRs
+  renderShoeTracker();
+  renderStrengthPRs();
 
   // Nutrition (spalone dziś)
   calcNutrition();
@@ -2311,22 +2340,312 @@ function refreshLLMPrompt() {
   textarea.value = generateLLMPrompt();
 }
 
-function copyLLMPrompt() {
-  const textarea = document.getElementById('llm-prompt');
-  if (!textarea) return;
-  textarea.select();
-  textarea.setSelectionRange(0, 99999);
-  try {
-    navigator.clipboard.writeText(textarea.value).then(() => {
-      const btn = document.getElementById('copy-llm-prompt');
-      if (btn) {
-        const orig = btn.textContent;
-        btn.textContent = '✅ Skopiowano!';
-        setTimeout(() => { btn.textContent = orig; }, 2000);
-      }
+// ============================================================
+//  Nowe funkcje: Odliczanie, Tracker Butów, Kalkulatory, PR
+// ============================================================
+function ensureDefaultShoes() {
+  if (!data.shoes || !Array.isArray(data.shoes) || data.shoes.length === 0) {
+    data.shoes = [
+      { id: 'shoe-1', name: 'Asics Novablast 4', mileage: 145, maxMileage: 600 },
+      { id: 'shoe-2', name: 'Nike Pegasus 40', mileage: 380, maxMileage: 600 },
+      { id: 'shoe-3', name: 'Nike Vaporfly 3 (Carbon)', mileage: 42, maxMileage: 400 }
+    ];
+  }
+}
+
+function renderShoeTracker() {
+  ensureDefaultShoes();
+  const container = document.getElementById('shoe-list');
+  if (!container) return;
+
+  container.innerHTML = data.shoes.map(shoe => {
+    const pct = Math.min(100, Math.round((shoe.mileage / shoe.maxMileage) * 100));
+    let badgeClass = 'good';
+    let statusText = 'Dobry';
+    if (pct >= 85) {
+      badgeClass = 'replace';
+      statusText = 'Do wymiany';
+    } else if (pct >= 60) {
+      badgeClass = 'warning';
+      statusText = 'Używane';
+    }
+    return `
+      <div class="shoe-card">
+        <div class="shoe-header">
+          <span class="shoe-name">👟 ${shoe.name}</span>
+          <span class="shoe-badge ${badgeClass}">${statusText}</span>
+        </div>
+        <div class="shoe-progress-bar">
+          <div class="shoe-progress-fill" style="width: ${pct}%"></div>
+        </div>
+        <div class="shoe-stats">
+          <span>Przebieg: ${shoe.mileage} km / ${shoe.maxMileage} km</span>
+          <span>${pct}%</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function populateShoeSelect() {
+  ensureDefaultShoes();
+  const select = document.getElementById('run-shoe');
+  if (!select) return;
+  select.innerHTML = `<option value="">-- Wybierz buty (opcjonalnie) --</option>` +
+    data.shoes.map(s => `<option value="${s.id}">${s.name} (${s.mileage}km)</option>`).join('');
+}
+
+function updateCountdownTimer() {
+  const raceDate = new Date('2026-10-11T09:00:00+02:00').getTime();
+  const now = new Date().getTime();
+  const diff = raceDate - now;
+
+  if (diff <= 0) {
+    ['cd-days', 'cd-hours', 'cd-minutes', 'cd-seconds'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = '0';
     });
-  } catch {
-    // fallback
-    document.execCommand('copy');
+    return;
+  }
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+  const elDays = document.getElementById('cd-days');
+  const elHours = document.getElementById('cd-hours');
+  const elMin = document.getElementById('cd-minutes');
+  const elSec = document.getElementById('cd-seconds');
+
+  if (elDays) elDays.textContent = d;
+  if (elHours) elHours.textContent = h;
+  if (elMin) elMin.textContent = m;
+  if (elSec) elSec.textContent = s;
+}
+
+function setupSplitCalculator() {
+  const targetSelect = document.getElementById('split-target-time');
+  const stratSelect = document.getElementById('split-strategy');
+  if (!targetSelect || !stratSelect) return;
+
+  const renderSplits = () => {
+    const target = targetSelect.value;
+    const strat = stratSelect.value;
+    let totalSec = 142 * 60; // 2:22:00
+    if (target === '2:25:00') totalSec = 145 * 60;
+    if (target === '2:19:00') totalSec = 139 * 60;
+
+    const basePaceSec = totalSec / 21.0975;
+    const body = document.getElementById('split-table-body');
+    if (!body) return;
+
+    let html = '';
+    let accumSec = 0;
+
+    for (let km = 1; km <= 21; km++) {
+      let kmPaceSec = basePaceSec;
+      if (strat === 'negative') {
+        if (km <= 5) kmPaceSec = basePaceSec + 15;
+        else if (km >= 16) kmPaceSec = basePaceSec - 10;
+      }
+      accumSec += kmPaceSec;
+
+      const isHighlight = [5, 10, 15, 20].includes(km);
+      const minPace = Math.floor(kmPaceSec / 60);
+      const secPace = Math.round(kmPaceSec % 60);
+      const pStr = `${minPace}:${secPace.toString().padStart(2, '0')}/km`;
+
+      const accH = Math.floor(accumSec / 3600);
+      const accM = Math.floor((accumSec % 3600) / 60);
+      const accS = Math.round(accumSec % 60);
+      const timeStr = `${accH > 0 ? accH + ':' : ''}${accM.toString().padStart(2, '0')}:${accS.toString().padStart(2, '0')}`;
+
+      html += `
+        <tr class="${isHighlight ? 'hl' : ''}">
+          <td><strong>${km} km</strong></td>
+          <td>${isHighlight ? `Punkt ${km} KM` : 'Odcinek'}</td>
+          <td>${pStr}</td>
+          <td><strong>${timeStr}</strong></td>
+        </tr>
+      `;
+    }
+
+    // Meta 21.1 km
+    const finalSec = totalSec;
+    const fH = Math.floor(finalSec / 3600);
+    const fM = Math.floor((finalSec % 3600) / 60);
+    const fS = Math.round(finalSec % 60);
+    html += `
+      <tr class="hl" style="background:var(--accent-gradient);color:#fff;">
+        <td><strong>21.1 KM (META)</strong></td>
+        <td>Meta Półmaratonu</td>
+        <td>—</td>
+        <td><strong>${fH}:${fM.toString().padStart(2, '0')}:${fS.toString().padStart(2, '0')}</strong></td>
+      </tr>
+    `;
+
+    body.innerHTML = html;
+  };
+
+  targetSelect.addEventListener('change', renderSplits);
+  stratSelect.addEventListener('change', renderSplits);
+  renderSplits();
+}
+
+function setupFuelingPlanner() {
+  const durInput = document.getElementById('fuel-duration');
+  const carbSelect = document.getElementById('fuel-carbs-rate');
+  const out = document.getElementById('fuel-timeline-output');
+  if (!durInput || !carbSelect || !out) return;
+
+  const renderFueling = () => {
+    const dur = parseInt(durInput.value) || 120;
+    const gelsCount = Math.floor((dur - 30) / 35);
+    let html = `
+      <div class="timeline-item">
+        <strong>🥣 2 godziny przed biegiem:</strong> Śniadanie lekkostrawne (~1-2g węglowodanów / kg) + 300 ml wody.
+      </div>
+      <div class="timeline-item">
+        <strong>💧 15 minut przed:</strong> 150–200 ml wody / lekki izotonik.
+      </div>
+    `;
+
+    let time = 45;
+    let gelIndex = 1;
+    while (time < dur - 15) {
+      html += `
+        <div class="timeline-item" style="border-left-color: var(--mint);">
+          <strong>⚡ Minuta ${time}:</strong> Żel #${gelIndex} (~25g węgli) + 150ml czystej wody.
+        </div>
+      `;
+      time += 35;
+      gelIndex++;
+    }
+
+    html += `
+      <div class="timeline-item" style="border-left-color: var(--amber);">
+        <strong>🏁 Po biegu (do 30 min):</strong> Shake białkowy + banan / posiłek regeneracyjny (20-30g białka + 60g węgli) + 500 ml płynów.
+      </div>
+      <div style="margin-top:12px;font-size:0.9rem;color:var(--accent-light);font-weight:700;">
+        💡 Łącznie potrzebujesz na ten bieg: ${Math.max(1, gelIndex - 1)} żeli oraz ok. ${(dur / 60 * 0.4).toFixed(1)}L wody.
+      </div>
+    `;
+
+    out.innerHTML = html;
+  };
+
+  durInput.addEventListener('input', renderFueling);
+  carbSelect.addEventListener('change', renderFueling);
+  renderFueling();
+}
+
+function setupFitatuCloning() {
+  const btn = document.getElementById('food-clone-yesterday-btn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const curDateStr = currentFoodDate;
+    const curDate = parseDateIso(curDateStr);
+    const yesterday = new Date(curDate);
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = formatDateIso(yesterday);
+
+    const yesterdayFoods = (data.foods || []).filter(f => f.date === yesterdayStr);
+    if (yesterdayFoods.length === 0) {
+      alert(`Brak posiłków z dnia wczorajszego (${formatDate(yesterdayStr)}) do sklonowania.`);
+      return;
+    }
+
+    yesterdayFoods.forEach(f => {
+      data.foods.push({
+        id: Date.now().toString(36) + Math.random().toString(36).substr(2, 5),
+        date: curDateStr,
+        name: f.name,
+        protein: f.protein,
+        fat: f.fat,
+        carbs: f.carbs,
+        calories: f.calories
+      });
+    });
+
+    saveData();
+    renderFoodList();
+    renderNutritionCard();
+  });
+}
+
+function renderStrengthPRs() {
+  const container = document.getElementById('strength-pr-container');
+  if (!container) return;
+
+  const prs = {};
+  (data.strength || []).forEach(session => {
+    (session.exercises || []).forEach(ex => {
+      const name = ex.label || ex.name;
+      (ex.sets || []).forEach(set => {
+        const w = parseFloat(set.weight) || 0;
+        if (w > 0) {
+          if (!prs[name] || w > prs[name].weight) {
+            prs[name] = { weight: w, reps: set.reps, date: session.date };
+          }
+        }
+      });
+    });
+  });
+
+  const keys = Object.keys(prs);
+  if (keys.length === 0) {
+    container.innerHTML = `<p style="color:var(--text-muted);font-size:0.9rem;">Brak zalogowanych ciężarów w treningach siłowych. Zaloguj pierwszy trening ze sztangą/hantlami!</p>`;
+    return;
+  }
+
+  container.innerHTML = keys.map(k => `
+    <div class="pr-card">
+      <div class="pr-title">🏆 ${k.toUpperCase()}</div>
+      <div class="pr-value">${prs[k].weight} kg</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">${prs[k].reps} powt. (${prs[k].date})</div>
+    </div>
+  `).join('');
+}
+
+function setupPrintAndICS() {
+  const printBtn = document.getElementById('print-plan-btn');
+  if (printBtn) {
+    printBtn.addEventListener('click', () => window.print());
+  }
+
+  const icsBtn = document.getElementById('export-ics-btn');
+  if (icsBtn) {
+    icsBtn.addEventListener('click', () => {
+      let ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Treningi Krakow 2026//PL',
+        'CALSCALE:GREGORIAN'
+      ];
+
+      TRAINING_PLAN.forEach(item => {
+        const range = getWeekRange(item.week);
+        const dt = range.end.replace(/-/g, '');
+        ics.push(
+          'BEGIN:VEVENT',
+          `SUMMARY:🏃 Long Run ${item.longRunKm} km (Tydzień ${item.week})`,
+          `DESCRIPTION:Faza: ${item.phase}. Uwagi: ${item.lrNote}`,
+          `DTSTART:${dt}T090000Z`,
+          `DTEND:${dt}T110000Z`,
+          'END:VEVENT'
+        );
+      });
+
+      ics.push('END:VCALENDAR');
+
+      const blob = new Blob([ics.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'treningi-krakow-2026.ics';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
   }
 }
