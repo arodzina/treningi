@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Treningi — Półmaraton Kraków 2026</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header>
+      <h1>🏃‍♀️ Treningi — Półmaraton Kraków 2026</h1>
+      <p class="subtitle">Cel: 2:22–2:25 (6:44–6:52/km) · Start: 11.10.2026</p>
+      <nav>
+        <button class="nav-btn active" data-view="dashboard">📊 Dashboard</button>
+        <button class="nav-btn" data-view="plan">📋 Plan</button>
+        <button class="nav-btn" data-view="run-log">🏃 Dodaj bieg</button>
+        <button class="nav-btn" data-view="strength-log">💪 Dodaj siłę</button>
+        <button class="nav-btn" data-view="history">📋 Historia</button>
+      </nav>
+    </header>
+
+    <!-- View: Dashboard -->
+    <section id="view-dashboard" class="view active">
+      <div class="dashboard-grid">
+        <div class="card stats-card">
+          <h3>📅
+            <button type="button" class="week-nav" id="week-prev" title="Poprzedni tydzień (←)">◀</button>
+            <span id="current-week">—</span>
+            <button type="button" class="week-nav" id="week-next" title="Następny tydzień (→)">▶</button>
+            <button type="button" class="btn-secondary week-today" id="week-today" style="display:none">Dziś</button>
+          </h3>
+          <div class="stats-row">
+            <div class="stat">
+              <span class="stat-label">Biegi</span>
+              <span class="stat-value" id="stat-runs">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Dystans</span>
+              <span class="stat-value" id="stat-distance">0 km</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Czas</span>
+              <span class="stat-value" id="stat-time">0h</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Siłowe</span>
+              <span class="stat-value" id="stat-strength">0</span>
+              <span style="font-size:0.75rem;color:var(--text-muted)" id="stat-strength-time"></span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Kalorie</span>
+              <span class="stat-value" id="stat-calories">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🏅 Postępy — plan vs rzeczywistość</h3>
+          <div class="progress-container">
+            <div class="progress-bar-wrapper">
+              <div class="progress-label">Tydzień</div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-plan" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="plan-status" id="plan-status">Ładuję plan treningowy...</div>
+        </div>
+
+        <div class="card nutrition-card">
+          <h3>🥗 Zapotrzebowanie kaloryczne i posiłki</h3>
+
+          <details class="profile-details" id="nut-profile-details">
+            <summary id="nut-profile-summary">⚙️ Profil: —</summary>
+            <div class="nutrition-grid">
+              <div class="form-group">
+                <label for="nut-weight">Waga (kg)</label>
+                <input type="number" id="nut-weight" min="0" step="0.1" placeholder="np. 62" />
+              </div>
+              <div class="form-group">
+                <label for="nut-height">Wzrost (cm)</label>
+                <input type="number" id="nut-height" min="0" placeholder="np. 165" />
+              </div>
+              <div class="form-group">
+                <label for="nut-age">Wiek (lata)</label>
+                <input type="number" id="nut-age" min="0" placeholder="np. 35" />
+              </div>
+              <div class="form-group">
+                <label for="nut-activity">Aktywność</label>
+                <select id="nut-activity">
+                  <option value="1.2">Siedzący (mało ruchu)</option>
+                  <option value="1.375" selected>Lekki (1–2×/tydz.)</option>
+                  <option value="1.55">Umiarkowany (2–3×/tydz.)</option>
+                  <option value="1.725">Wysoki (4–5×/tydz.)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="nut-goal">Cel</label>
+                <select id="nut-goal">
+                  <option value="recomp">Rekompozycja (↑ mięśnie, bilans ✓)</option>
+                  <option value="0">Utrzymanie wagi</option>
+                  <option value="-300">Redukcja (−300 kcal)</option>
+                  <option value="-500">Redukcja (−500 kcal)</option>
+                  <option value="200">Lekki przyrost (+200 kcal)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="nut-watch-total">⌚ Spalone dziś (zegarek/total)</label>
+                <input type="number" id="nut-watch-total" min="0" placeholder="np. 2450" />
+              </div>
+            </div>
+          </details>
+
+          <div class="food-section">
+            <div class="food-header-row">
+              <h3 class="food-section-title" style="margin-bottom:0">🍽 Posiłki — przepisz z Fitatu</h3>
+              <div id="food-date-nav" class="food-date-nav"></div>
+            </div>
+            <div class="food-form">
+              <div class="form-group" style="min-width: 140px;">
+                <label for="food-date">Data posiłku</label>
+                <input type="date" id="food-date" />
+              </div>
+              <div class="form-group">
+                <label for="food-name">Posiłek / nazwa</label>
+                <input type="text" id="food-name" placeholder="np. Owsianka z bananem" />
+              </div>
+              <div class="form-group">
+                <label for="food-protein">Białko (g)</label>
+                <input type="number" id="food-protein" min="0" step="0.1" placeholder="0" />
+              </div>
+              <div class="form-group">
+                <label for="food-fat">Tłuszcz (g)</label>
+                <input type="number" id="food-fat" min="0" step="0.1" placeholder="0" />
+              </div>
+              <div class="form-group">
+                <label for="food-carbs">Węglowodany (g)</label>
+                <input type="number" id="food-carbs" min="0" step="0.1" placeholder="0" />
+              </div>
+              <div class="form-group">
+                <label for="food-calories">Kalorie (kcal)</label>
+                <input type="number" id="food-calories" min="0" step="1" placeholder="0" />
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn-primary" id="food-add-btn">+ Dodaj posiłek</button>
+              </div>
+            </div>
+            <div id="food-list"></div>
+          </div>
+
+          <div class="day-summary">
+            <div id="nut-results"></div>
+
+            <div class="summary-grid">
+              <div class="food-totals-block">
+                <h3 class="food-section-title" id="food-totals-title">🍽 Zjedzone w wybranym dniu</h3>
+                <div id="food-totals"></div>
+              </div>
+              <div class="calories-chart-block">
+                <h3 class="food-section-title">🔥 Kalorie — 14 dni (zjedzone vs spalone)</h3>
+                <canvas id="chart-calories"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card chart-card">
+          <h3>📈 Objętość biegowa (km/tydzień)</h3>
+          <canvas id="chart-volume"></canvas>
+        </div>
+
+        <div class="card chart-card">
+          <h3>⏱ Tempo średnie (min/km)</h3>
+          <canvas id="chart-pace"></canvas>
+        </div>
+
+        <div class="card chart-card">
+          <h3>❤️ Średnie tętno (bpm)</h3>
+          <canvas id="chart-hr"></canvas>
+        </div>
+
+        <div class="card chart-card">
+          <h3>🔄 Kadencja średnia (spm)</h3>
+          <canvas id="chart-cadence"></canvas>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- View: Plan -->
+    <section id="view-plan" class="view">
+      <div class="plan-grid">
+
+        <!-- Górny rząd: wzorcowy mikrocykl (lewa) + plan tygodnia (prawa) -->
+        <div class="plan-top-row">
+          <div class="card">
+            <h2>📅 Mikrocykl tygodniowy</h2>
+            <p class="plan-note" style="margin-top:0">Wzorzec — na prawo edytujesz plan na bieżący tydzień</p>
+            <table class="plan-table">
+              <thead>
+                <tr><th>Dzień</th><th>Sesja</th><th>Uwagi</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Pon</td><td>🚫 Pełny odpoczynek</td><td>Regeneracja po long runie — kluczowe okno</td></tr>
+                <tr><td>Wt</td><td>🌅 Easy &lt;145 bpm<br>🌙 Siła A (ciężka)</td><td>min. 6–8h odstępu rano–wieczór; ~36–42h bufora od LR</td></tr>
+                <tr><td>Śr</td><td>🧘 Pilates + Easy &lt;145 bpm</td><td>Mobilność + tlenowo</td></tr>
+                <tr><td>Cz</td><td>⚡ Akcent tempowy / progresywny</td><td>Jedyny dzień bez limitu HR</td></tr>
+                <tr><td>Pt</td><td>💪 Siła B (lekka) + plyometria</td><td>Minimalny DOMS — chroni long run</td></tr>
+                <tr><td>Sob</td><td>🚫 Pełen odpoczynek</td><td>—</td></tr>
+                <tr><td>Ndz</td><td>🏃 Long Run (z regułą HR i węglowodanami)</td><td>Kluczowa sesja tygodnia</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <h2>📝 Plan na ten tydzień</h2>
+            <p class="plan-note" style="margin-top:0">Tydzień <span id="planner-week-num">—</span> · <span id="planner-week-range"></span></p>
+            <div id="weekly-planner">
+              <!-- wypełniane przez JS -->
+            </div>
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <button type="button" class="btn-primary" id="save-week-plan">💾 Zapisz plan tygodnia</button>
+              <button type="button" class="btn-secondary" id="reset-week-plan">↩ Wzorzec</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Siła A -->
+        <div class="card">
+          <h2>🏋️ Siła A (Wtorek, wieczorem) — Dół Ciała + Plecy/Barki</h2>
+          <p class="plan-note">Najcięższa jednostka tygodnia. ~36–42h po LR, min. 6–8h po porannym Easy. 4-letni staż siłowy.</p>
+          <h3>Rozgrzewka i aktywacja (8–10 min)</h3>
+          <ul class="plan-list">
+            <li>Monster Walk z gumą nad kolanami: 2 serie × 12 kroków w każdą stronę</li>
+            <li>Clamshells (muszelki) z gumą: 2 serie × 15 powtórzeń na stronę</li>
+            <li>2 ćwiczenia plyometryczne submaksymalne (pogo hops, low skipping) — potencjacja przed HT</li>
+          </ul>
+          <h3>Część główna — dół ciała</h3>
+          <ul class="plan-list">
+            <li><strong>Hip Thrust ze sztangą</strong> — 5 × 6, ~80 kg, RIR 2 (nigdy do upadku)</li>
+            <li><strong>RDL (jednonóż / obunóż, tydzień na zmianę)</strong> — 4 × 8 (jeśli jednonóż: na nogę)</li>
+            <li><strong>Kickback (wykopy nogi)</strong> — 3 × 12–15 na nogę</li>
+          </ul>
+          <h3>Część główna — plecy/barki</h3>
+          <ul class="plan-list">
+            <li><strong>Wiosłowanie sztangą nachwytem</strong> — 3 × 8</li>
+            <li><strong>Gorilla row</strong> — 3 × 8 na stronę</li>
+            <li><strong>Wiosłowanie na wyciągu siedząc</strong> — 3 × 10</li>
+            <li><strong>Landmine Press</strong> — 3 × 6</li>
+            <li><strong>Face pull / odwrotne rozpiętki (na zmianę co tydzień)</strong> — 2 × 12–15, niskie obciążenie</li>
+          </ul>
+          <p class="plan-note">Cel posturalny: tylne pasmo barku pierwsze słabnie przy zmęczeniu na długim dystansie. Unoszenie ramion przodem usunięte — Landmine Press trenuje już przedni akton wielostawowo.</p>
+        </div>
+
+        <!-- Siła B -->
+        <div class="card">
+          <h2>🏋️ Siła B (Piątek) — Dół Ciała (bez przysiadu) + Klatka/Ramiona</h2>
+          <p class="plan-note">Bez bilateralnego ciężkiego przysiadu — priorytetem ochrona jakości niedzielnego LR. Przysiad wraca w bloku pobiegowym (listopad+).</p>
+          <h3>Rozgrzewka i mobilność (8–10 min)</h3>
+          <ul class="plan-list">
+            <li>Koci grzbiet / pies z głową w dół: 10 płynnych przejść</li>
+            <li>Wykroki rotacyjne (Spiderman lunge): 5 powt. na nogę z przytrzymaniem</li>
+            <li>2 ćwiczenia plyometryczne submaksymalne (jak we wtorek)</li>
+          </ul>
+          <h3>Część główna — dół ciała</h3>
+          <ul class="plan-list">
+            <li><strong>Bułgary</strong> — 3 × 8–10 na nogę, RIR 2–3 (bez wariantu skocznego)</li>
+            <li><strong>Łydki na maszynie Smitha</strong> — 3 × 15</li>
+          </ul>
+          <h3>Część główna — klatka/ramiona</h3>
+          <ul class="plan-list">
+            <li><strong>Wyciskanie hantli na klatkę (ławka płaska)</strong> — 3 × 8–10</li>
+            <li><strong>Rozpiętki (brama/kabel)</strong> — 3 × 10–12</li>
+            <li><strong>Spider curl (biceps)</strong> — 2 × 10–12</li>
+            <li><strong>Triceps na maszynie</strong> — 2 × 10–12</li>
+          </ul>
+        </div>
+
+        <!-- Reguła tętna -->
+        <div class="card">
+          <h2>❤️ Reguła tętna</h2>
+          <ul class="plan-list">
+            <li><strong>Wt/Śr Easy:</strong> sztywno <strong>&lt;145 bpm</strong>, tempo dowolne (może być bardzo wolne na starcie — to normalne i pożądane)</li>
+            <li><strong>Long Run (Ndz):</strong> pierwsze 65–70% dystansu <strong>&lt;150 bpm</strong>; ostatnie 30% — kontrolowana progresja do tempa startowego docelowego, bez twardego sufitu, ale z monitoringiem RPE</li>
+            <li><strong>Czwartek (akcent):</strong> jedyna sesja <strong>bez rygoru HR</strong> — tu pracujemy na tempie, nie na pulsie</li>
+          </ul>
+        </div>
+
+        <!-- Progresja kadencji -->
+        <div class="card">
+          <h2>🔄 Progresja kadencji (osobny tor)</h2>
+          <table class="plan-table">
+            <thead>
+              <tr><th>Tygodnie</th><th>Cel kadencji</th><th>Gdzie wdrażana</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1–2</td><td>148–150 spm</td><td>Tylko stridery 4×20s po easy + środkowa część tempowego czwartku</td></tr>
+              <tr><td>3–4</td><td>150–152 spm</td><td>Easy runs wt/śr w całości</td></tr>
+              <tr><td>5–6</td><td>152–154 spm</td><td>+ pierwsza połowa long runu</td></tr>
+              <tr><td>7–10</td><td>154–156 spm</td><td>Wszystkie sesje, łącznie z całym long runem</td></tr>
+              <tr><td>11–12</td><td>utrzymanie 154–156</td><td>Bez nowych bodźców, tylko utrwalenie</td></tr>
+            </tbody>
+          </table>
+          <p class="plan-note">🎵 Metronom/playlista tylko jako narzędzie pomocnicze na sesjach easy — nigdy nie wymuszany na long runie w tygodniach 1–4.</p>
+        </div>
+
+        <!-- Progresja long run -->
+        <div class="card">
+          <h2>📈 Progresja long run</h2>
+          <table class="plan-table">
+            <thead>
+              <tr><th>Tydzień</th><th>Dystans LR</th><th>Faza</th><th>Uwagi</th></tr>
+            </thead>
+            <tbody id="plan-longrun-table">
+              <!-- wypełniane z JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Plan km dzień po dniu -->
+        <div class="card">
+          <h2>📊 Plan kilometrów — dzień po dniu</h2>
+          <p class="plan-note">Pon, Pt, Sob — odpoczynek / siła, bez km</p>
+          <div class="table-responsive">
+          <table class="plan-table">
+            <thead>
+              <tr><th>Tydz.</th><th>Wt (easy)</th><th>Śr (easy)</th><th>Cz (tempowy)</th><th>Ndz (LR)</th><th>📦 Suma</th><th>Faza</th></tr>
+            </thead>
+            <tbody id="weekly-km-table">
+              <!-- wypełniane z JS -->
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <!-- Cel wyścigowy -->
+        <div class="card">
+          <h2>🎯 Cel wyścigowy</h2>
+          <table class="plan-table">
+            <thead>
+              <tr><th>Scenariusz</th><th>Czas</th><th>Tempo/km</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>PB obecny</td><td>2:34:11</td><td>7:18</td><td>punkt startowy</td></tr>
+              <tr class="hl"><td>Plan A (realistyczny)</td><td>2:22:00–2:25:00</td><td>6:44–6:52</td><td>🎯 główny cel</td></tr>
+              <tr><td>Plan B (ambitny)</td><td>~2:19:00</td><td>6:35</td><td>decyzja w tyg. 9</td></tr>
+              <tr><td>Cel na wiosnę 2027</td><td>2:15:00</td><td>6:23</td><td>📌 nie na ten start</td></tr>
+            </tbody>
+          </table>
+          <p class="plan-note">Poprawa o 9–12 min względem PB w 12 tygodni jest w pełni realna — znaczna część rezerwy to korekta błędów (polaryzacja, kadencja, węglowodany), a nie budowa nowej fizjologii od zera.</p>
+        </div>
+
+        <!-- Struktura makrocyklu -->
+        <div class="card">
+          <h2>📐 Struktura makrocyklu</h2>
+          <table class="plan-table">
+            <thead>
+              <tr><th>Faza</th><th>Tygodnie</th><th>Cel dominujący</th><th>Deload</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>I. Baza</td><td>1–4</td><td>Polaryzacja HR, progresja kadencji, stabilizacja siły</td><td>tydz. 4 (−30%)</td></tr>
+              <tr><td>II. Budowa</td><td>5–8</td><td>Objętość long run, wprowadzenie tempa progresywnego</td><td>tydz. 8 (−30%)</td></tr>
+              <tr><td>III. Specyficzna</td><td>9–10</td><td>Tempo startowe pod obciążeniem zmęczeniowym</td><td>—</td></tr>
+              <tr><td>IV. Taper</td><td>11–12</td><td>Redukcja objętości, utrzymanie ostrości</td><td>cały blok</td></tr>
+            </tbody>
+          </table>
+          <p class="plan-note">📌 <strong>Zasada nadrzędna:</strong> w danym tygodniu tylko jedna zmienna rośnie agresywnie. Gdy rośnie kadencja — HR i objętość stoją. Gdy rośnie objętość long run — kadencja jest już ustabilizowana.</p>
+        </div>
+
+        <!-- Protokół żywieniowy (rozszerzony) -->
+        <div class="card">
+          <h2>🥤 Protokół żywieniowy</h2>
+
+          <h3>📊 Cel dzienny — rekompozycja ciała (70 kg)</h3>
+          <p class="plan-note" style="margin-top:0">Cel: wzrost mięśni bez przyrostu tłuszczu. Nauka pokazuje, że kluczowy jest <strong>bilans tygodniowy</strong> — dlatego w dni treningowe jesz nieco więcej, a w dni odpoczynku neutralnie.</p>
+          <table class="plan-table" style="margin-bottom:12px">
+            <thead>
+              <tr><th>Rodzaj dnia</th><th>Kalorie</th><th>Białko</th><th>Węglowodany</th><th>Tłuszcz</th></tr>
+            </thead>
+            <tbody>
+              <tr class="hl"><td>💪 Dzień siłowy (Wt/Pt)</td><td>~2400–2500 kcal</td><td>≥140 g</td><td>~240–270 g</td><td>~65–75 g</td></tr>
+              <tr><td>🏃 Dzień biegowy (Easy)</td><td>~2200–2350 kcal</td><td>≥140 g</td><td>~210–240 g</td><td>~60–70 g</td></tr>
+              <tr><td>🏃 Long Run (Ndz)</td><td>~2500–2700 kcal</td><td>≥140 g</td><td>~270–310 g</td><td>~65–75 g</td></tr>
+              <tr><td>😴 Dzień odpoczynku (Pon/Sob)</td><td>~1800–1950 kcal</td><td>≥140 g</td><td>~160–190 g</td><td>~60–70 g</td></tr>
+            </tbody>
+          </table>
+          <p class="plan-note">💡 <strong>Kalorie bazowe bez treningu (BMR×1.375):</strong> ok. 1 880 kcal. Aplikacja automatycznie oblicza Twój cel na dany dzień na podstawie zalogowanych treningów.</p>
+
+          <h3>🥩 Białko — priorytet #1</h3>
+          <ul class="plan-list">
+            <li><strong>140 g białka dziennie</strong> (2 g/kg masy ciała) — wymagane we wszystkie dni, szczególnie w dni odpoczynku, żeby nie tracić mięśni</li>
+            <li>Źródła: pierś z kurczaka, jajka, twaróg, jogurt grecki, ryby, tofu, shake białkowy</li>
+            <li>Rozłóż na 4–5 posiłków — ok. 30–35 g na porcję to optymalny limit wchłaniania w okno białkowe</li>
+          </ul>
+
+          <h3>W trakcie biegu (&gt;75 min)</h3>
+          <ul class="plan-list">
+            <li><strong>30–60 g węglowodanów / godzinę</strong> — im dłuższy trening, tym bliżej górnej granicy</li>
+            <li>Pierwszy żel w <strong>45. minucie</strong>, kolejne co <strong>40–45 min</strong></li>
+            <li>Popijać <strong>wodą</strong> (nie izotonikiem) — żel + izotonik = ryzyko problemów żołądkowych</li>
+            <li>Na LR &gt; 90 min: żel + <strong>banan</strong> lub <strong>żelki</strong> w połowie dla urozmaicenia smaku i tekstury</li>
+            <li>Trening jelit (<strong>gut training</strong>) — wdrażać na treningach czwartkowych i długich od tyg. 3</li>
+          </ul>
+          <h3>Przed treningiem (2–3 h przed)</h3>
+          <ul class="plan-list">
+            <li>Posiłek: <strong>1–2 g węglowodanów / kg masy ciała</strong> — np. owsianka, banany, tosty z miodem</li>
+            <li>Unikać tłuszczu i błonnika tuż przed biegiem (opóźniają opróżnianie żołądka)</li>
+            <li><strong>15–30 min przed:</strong> opcjonalnie mała przekąska (½ banana, żel) + 200–300 ml wody</li>
+          </ul>
+          <h3>Po treningu</h3>
+          <ul class="plan-list">
+            <li><strong>Okno metaboliczne (30–60 min):</strong> 20–30 g białka + 60–90 g węglowodanów — np. shake białkowy z bananem i mlekiem / owsianka z białkiem</li>
+            <li>Uzupełnienie elektrolitów — zwłaszcza jeśli trening &gt; 90 min lub w upale</li>
+            <li>Nawodnienie: 1,2–1,5 × utrata masy ciała w litrach wody w ciągu 2–4 h</li>
+          </ul>
+          <h3>Strategia startowa (11.10.2026)</h3>
+          <ul class="plan-list">
+            <li><strong>D-2 / D-1:</strong> ładowanie węglowodanami (~8–10 g / kg / doba), lekkostrawnie</li>
+            <li><strong>D-0 rano (3 h przed):</strong> lekkie śniadanie (1–2 g/kg węgli), np. ryż na mleku, banany, tosty</li>
+            <li><strong>30 min przed startem:</strong> kofeina (opcjonalnie, jeśli testowana na treningach)</li>
+            <li><strong>W trakcie:</strong> 60–90 g węglowodanów / h — żel co 30–40 min + woda, ewentualnie woda z izotonikiem na zmianę</li>
+            <li>⚠️ <strong>Nie testować nic nowego w tygodniu wyścigu!</strong> Wszystko sprawdzone na LR i czwartkowych akcentach.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Prompt dla LLM -->
+      <div class="card">
+        <h2>🤖 Prompt dla LLM — generuj pomysły na treningi</h2>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:8px">
+          Skopiuj poniższy prompt i wklej do ChatGPT / Claude / innego LLM, żeby dostać spersonalizowane
+          propozycje treningów (głównie biegowych, ale też siłowych) dopasowane do Twojego planu i ostatnich wyników.
+          <strong>Możesz edytować prompt przed skopiowaniem</strong> — odświeżenie nadpisze tylko wtedy, gdy potwierdzisz.
+        </p>
+        <textarea id="llm-prompt"
+          style="width:100%;min-height:320px;padding:12px;font-family:monospace;font-size:0.85rem;line-height:1.5;background:var(--surface2);color:var(--text);border:1px solid var(--border);border-radius:var(--radius-sm);resize:vertical"
+        ></textarea>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+          <button type="button" class="btn-primary" id="copy-llm-prompt">📋 Kopiuj prompt</button>
+          <button type="button" class="btn-secondary" id="refresh-llm-prompt">🔄 Odśwież dane</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- View: Run Log -->
+    <section id="view-run-log" class="view">
+      <div class="card form-card">
+        <h2>🏃 Dodaj trening biegowy</h2>
+        <form id="run-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="run-date">Data</label>
+              <input type="date" id="run-date" required />
+            </div>
+            <div class="form-group">
+              <label for="run-type">Typ</label>
+              <select id="run-type" required>
+                <option value="easy">Easy</option>
+                <option value="tempo">Tempo / Progresywny</option>
+                <option value="long-run">Long Run</option>
+                <option value="striders">Stridery</option>
+                <option value="other">Inny</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="run-distance">Dystans (km)</label>
+              <input type="number" id="run-distance" step="0.1" min="0" required />
+            </div>
+            <div class="form-group">
+              <label for="run-minutes">Czas (minuty)</label>
+              <div style="display:flex;gap:6px;align-items:center">
+                <input type="number" id="run-minutes" min="0" required style="flex:1" placeholder="min" />
+                <span style="font-size:1.2rem;color:var(--text-muted)">:</span>
+                <input type="number" id="run-seconds" min="0" max="59" style="flex:1" placeholder="sek" value="0" />
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="run-hr">Średnie tętno (bpm)</label>
+              <input type="number" id="run-hr" min="0" placeholder="opcjonalnie" />
+            </div>
+            <div class="form-group">
+              <label for="run-cadence">Średnia kadencja (spm)</label>
+              <input type="number" id="run-cadence" min="0" step="1" placeholder="opcjonalnie" />
+            </div>
+            <div class="form-group">
+              <label for="run-calories">Kalorie (kcal)</label>
+              <input type="number" id="run-calories" min="0" placeholder="z zegarka, opcjonalnie" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="run-notes">Notatki</label>
+            <textarea id="run-notes" rows="2" placeholder="np. samopoczucie, nawodnienie, sprzęt..."></textarea>
+          </div>
+          <input type="hidden" id="run-edit-id" value="" />
+          <div style="display:flex;gap:8px;align-items:center">
+            <button type="submit" class="btn-primary" id="run-submit-btn">Zapisz trening</button>
+            <button type="button" class="btn-secondary" id="run-cancel-edit" style="display:none">Anuluj edycję</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- View: Strength Log -->
+    <section id="view-strength-log" class="view">
+      <div class="card form-card">
+        <h2>💪 Dodaj trening siłowy</h2>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:12px">Wybierz sesję — ćwiczenia i serie wypełnią się automatycznie. Możesz potem zmienić dowolne wartości, dodać/usunąć serie lub ćwiczenia.</p>
+        <form id="strength-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="strength-date">Data</label>
+              <input type="date" id="strength-date" required />
+            </div>
+            <div class="form-group">
+              <label for="strength-session">Sesja (template)</label>
+              <select id="strength-session" required>
+                <option value="siła-a">Siła A (Wtorek – dół + plecy/barki)</option>
+                <option value="siła-b">Siła B (Piątek – dół + klatka/ramiona)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="strength-minutes">Czas trwania</label>
+              <div style="display:flex;gap:6px;align-items:center">
+                <input type="number" id="strength-minutes" min="0" style="flex:1" placeholder="min" />
+                <span style="font-size:1.2rem;color:var(--text-muted)">:</span>
+                <input type="number" id="strength-seconds" min="0" max="59" style="flex:1" placeholder="sek" value="0" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="strength-calories">Kalorie (kcal)</label>
+              <input type="number" id="strength-calories" min="0" placeholder="z zegarka, opcjonalnie" />
+            </div>
+          </div>
+
+          <div id="strength-exercises">
+            <!-- Ćwiczenia z seriami budowane przez JS -->
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <button type="button" class="btn-secondary" id="add-exercise">+ Dodaj ćwiczenie</button>
+            <button type="submit" class="btn-primary">Zapisz trening siłowy</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- View: History -->
+    <section id="view-history" class="view">
+      <div class="card">
+        <div class="history-header">
+          <h2>📋 Historia treningów</h2>
+          <div class="history-filters">
+            <select id="filter-type">
+              <option value="all">Wszystkie</option>
+              <option value="run">Biegi</option>
+              <option value="strength">Siłowe</option>
+            </select>
+            <button class="btn-danger" id="clear-all">Wyczyść wszystko</button>
+          </div>
+        </div>
+        <div id="history-list">
+          <p class="empty-state">Brak treningów. Dodaj pierwszy!</p>
+        </div>
+      </div>
+
+      <div class="card backup-card">
+        <h2>💾 Kopia zapasowa danych</h2>
+        <p class="backup-note">💡 <strong>Automatyczna synchronizacja:</strong> gdy strona jest otwarta i masz internet, dane same zapisują się na serwerze i pobierają na każdym urządzeniu — nie musisz nic robić. Poniższe przyciski służą do ręcznej kopii zapasowej (np. gdy chcesz mieć plik na dysku).</p>
+        <div class="backup-actions">
+          <button type="button" class="btn-primary" id="sync-open-btn">🔄 Synchronizuj z innym urządzeniem</button>
+          <button type="button" class="btn-secondary" id="export-data">📤 Eksportuj do pliku</button>
+          <button type="button" class="btn-secondary" id="import-data">📥 Importuj z pliku</button>
+          <input type="file" id="import-file" accept=".json,application/json" style="display:none" />
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal: przewodnik synchronizacji -->
+  <div class="modal-overlay" id="sync-modal" style="display:none">
+    <div class="modal">
+      <button type="button" class="modal-close" id="sync-modal-close" title="Zamknij">✕</button>
+      <h3>🔄 Przenoszenie danych między urządzeniami</h3>
+      <div class="sync-status" id="sync-status"></div>
+      <ol class="sync-steps">
+        <li><strong>Eksport:</strong> na urządzeniu, które <u>ma dane</u>, kliknij „📤 Eksportuj stąd" — pobierze się plik kopii.</li>
+        <li><strong>Przenieś plik:</strong> wyślij go na drugie urządzenie (e-mail, iCloud, WhatsApp, pendrive...).</li>
+        <li><strong>Import:</strong> na drugim urządzeniu otwórz tę stronę, kliknij „📥 Importuj tu" i wybierz ten plik — strona odświeży się z danymi.</li>
+      </ol>
+      <div class="modal-actions">
+        <button type="button" class="btn-primary" id="sync-export-btn">📤 Eksportuj stąd</button>
+        <button type="button" class="btn-secondary" id="sync-import-btn">📥 Importuj tu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=20260806_v7"></script>
+</body>
+</html>

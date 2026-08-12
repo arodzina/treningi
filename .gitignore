@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# System / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Temporary / Zip / Backup files
+*.zip
+*.backup.json
+treningi-kopia*.json
+treningi-update-pythonanywhere/
