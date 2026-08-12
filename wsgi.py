@@ -11,11 +11,7 @@ import json
 import mimetypes
 
 # Katalog z plikami aplikacji (index.html, app.js, ...)
-# Najpierw szukamy /home/olcix/ (PythonAnywhere), a jak nie ma — katalog wsgi.py
-if os.path.isdir('/home/olcix/'):
-    BASE_DIR = '/home/olcix/'
-else:
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Plik, w którym przechowywane są zsynchronizowane dane
 DATA_FILE = os.path.join(BASE_DIR, 'treningi-data.json')
 
