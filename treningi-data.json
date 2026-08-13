@@ -936,24 +936,68 @@
       "pon": [
         {
           "text": "💪 Siła A",
-          "done": false
+          "done": true
         }
       ],
       "wt": [
         {
-          "text": "🌅 Easy <145 bpm",
-          "done": false
+          "text": "🌅 Easy 6 km <145 bpm",
+          "done": true
         }
       ],
       "śr": [
         {
-          "text": "🧘 Pilates + Easy <145 bpm",
+          "text": "🧘 Pilates / Odpoczynek",
+          "done": true
+        }
+      ],
+      "cz": [
+        {
+          "text": "🚫 Odpoczynek",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "🚫 Odpoczynek",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🚫 Deload / Odpoczynek",
+          "done": false
+        }
+      ]
+    },
+    "4": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": true
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy 7 km <145 bpm",
+          "done": true
+        }
+      ],
+      "śr": [
+        {
+          "text": "💪 Siła A (wieczorem)",
           "done": false
         }
       ],
       "cz": [
         {
-          "text": "⚡ Akcent tempowy / progresywny",
+          "text": "⚡ Akcent tempowy / trucht 5 km",
           "done": false
         }
       ],
@@ -971,7 +1015,359 @@
       ],
       "ndz": [
         {
-          "text": "🏃 Long Run",
+          "text": "🏃 Long Run 14 km (<150 bpm)",
+          "done": false
+        }
+      ]
+    },
+    "5": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy 7-8 km <145 bpm",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "💪 Siła A",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Interwały / tempo 6 km",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "💪 Siła B + plyometria",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏃 Long Run 16 km",
+          "done": false
+        }
+      ]
+    },
+    "6": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "💪 Siła A",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Tempo 7 km",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "💪 Siła B + plyometria",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏃 Long Run 17 km (+ 2x2km tempo)",
+          "done": false
+        }
+      ]
+    },
+    "7": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "💪 Siła A",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Tempo 7.5 km",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "💪 Siła B + plyometria",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏃 Long Run 19 km",
+          "done": false
+        }
+      ]
+    },
+    "8": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "💪 Siła A",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Tempo 8 km",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "💪 Siła B + plyometria",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏃 Long Run 20 km",
+          "done": false
+        }
+      ]
+    },
+    "9": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "💪 Siła A (lekka)",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Rytmy 5 km",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "💪 Siła B (lekka)",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏃 Long Run Deload 14 km",
+          "done": false
+        }
+      ]
+    },
+    "10": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy <145 bpm",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "💪 Siła A",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Tempo 6 km",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "💪 Siła B",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🔥 PRÓBA GENERALNA 21 km (ostatnie 8 km tempo startowe)",
+          "done": false
+        }
+      ]
+    },
+    "11": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy 6 km",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "💪 Siła A (rozruch)",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "⚡ Rytmy 5 km",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "🧘 Mobilność / Siła B lekko",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🚫 Pełen odpoczynek",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏃 Taper Long Run 14 km",
+          "done": false
+        }
+      ]
+    },
+    "12": {
+      "pon": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "wt": [
+        {
+          "text": "🌅 Easy 5 km + 4x100m przebieżki",
+          "done": false
+        }
+      ],
+      "śr": [
+        {
+          "text": "🧘 Mobilność / Rozciąganie",
+          "done": false
+        }
+      ],
+      "cz": [
+        {
+          "text": "🏃 Rozruch 4 km",
+          "done": false
+        }
+      ],
+      "pt": [
+        {
+          "text": "🚫 Pełny odpoczynek",
+          "done": false
+        }
+      ],
+      "sob": [
+        {
+          "text": "🏃 Rozruch 3 km + ładowanie węgli",
+          "done": false
+        }
+      ],
+      "ndz": [
+        {
+          "text": "🏆 PÓŁMARATON KRAKOWSKI (2:22–2:25)",
           "done": false
         }
       ]
