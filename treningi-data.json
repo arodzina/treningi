@@ -56,7 +56,6 @@
         "id": "run_20260804_01",
         "date": "2026-08-04",
         "type": "easy",
-        "shoeId": "shoe-1",
         "distance": 6.03,
         "duration": 50.98,
         "hr": 144,
@@ -68,7 +67,6 @@
         "id": "run_20260811_01",
         "date": "2026-08-11",
         "type": "easy",
-        "shoeId": "shoe-1",
         "distance": 7.01,
         "duration": 57.1,
         "hr": 145,
@@ -999,7 +997,15 @@
         "calories": 159
       }
     ],
-    "updatedAt": "2026-08-06T13:36:00.000Z"
+    "shoes": [
+      {
+        "id": "shoe-1",
+        "name": "Asics Novablast 4",
+        "mileage": 480,
+        "maxMileage": 600
+      }
+    ],
+    "updatedAt": "2026-08-14T11:36:00.000Z"
   },
   "nutritionProfile": {
     "weight": "70",

@@ -2053,6 +2053,7 @@ function applySnapshot(snap) {
     runs: (snap.data && Array.isArray(snap.data.runs)) ? snap.data.runs : (data.runs || []),
     strength: (snap.data && Array.isArray(snap.data.strength)) ? snap.data.strength : (data.strength || []),
     foods: mergedFoods,
+    shoes: (snap.data && Array.isArray(snap.data.shoes)) ? snap.data.shoes : (data.shoes || []),
   };
   if (snap.data && snap.data.updatedAt) data.updatedAt = snap.data.updatedAt;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -2081,6 +2082,8 @@ function syncWithServer() {
       renderFoodDateNav();
       renderFoodLog();
       calcNutrition();
+      renderShoeTracker();
+      populateShoeSelect();
     })
     .catch(() => { /* offline — zostajemy na danych lokalnych */ });
 }
@@ -2388,11 +2391,9 @@ function refreshLLMPrompt() {
 //  Nowe funkcje: Odliczanie, Tracker Butów, Kalkulatory, PR
 // ============================================================
 function ensureDefaultShoes() {
-  if (!data.shoes || !Array.isArray(data.shoes) || data.shoes.length === 0) {
+  if (!data.shoes || !Array.isArray(data.shoes) || data.shoes.length === 0 || data.shoes.some(s => s.id === 'shoe-2' || s.id === 'shoe-3')) {
     data.shoes = [
-      { id: 'shoe-1', name: 'Asics Novablast 4', mileage: 145, maxMileage: 600 },
-      { id: 'shoe-2', name: 'Nike Pegasus 40', mileage: 380, maxMileage: 600 },
-      { id: 'shoe-3', name: 'Nike Vaporfly 3 (Carbon)', mileage: 42, maxMileage: 400 }
+      { id: 'shoe-1', name: 'Asics Novablast 4', mileage: 480, maxMileage: 600 }
     ];
   }
 }
@@ -2413,23 +2414,39 @@ function renderShoeTracker() {
       badgeClass = 'warning';
       statusText = 'Używane';
     }
+    const remaining = Math.max(0, Math.round((shoe.maxMileage - shoe.mileage) * 10) / 10);
     return `
       <div class="shoe-card">
         <div class="shoe-header">
           <span class="shoe-name">👟 ${shoe.name}</span>
-          <span class="shoe-badge ${badgeClass}">${statusText}</span>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span class="shoe-badge ${badgeClass}">${statusText}</span>
+            <button type="button" class="item-edit" onclick="editShoeMileage('${shoe.id}')" title="Zmień przebieg" style="font-size:0.8rem;padding:2px 6px;cursor:pointer;">✎ Edytuj</button>
+          </div>
         </div>
         <div class="shoe-progress-bar">
           <div class="shoe-progress-fill" style="width: ${pct}%"></div>
         </div>
         <div class="shoe-stats">
-          <span>Przebieg: ${shoe.mileage} km / ${shoe.maxMileage} km</span>
+          <span>Przebieg: <strong>${shoe.mileage} km</strong> / ${shoe.maxMileage} km (zostało ok. <strong>${remaining} km</strong>)</span>
           <span>${pct}%</span>
         </div>
       </div>
     `;
   }).join('');
 }
+
+window.editShoeMileage = function(shoeId) {
+  const shoe = (data.shoes || []).find(s => s.id === shoeId);
+  if (!shoe) return;
+  const newMileage = prompt(`Wpisz aktualny przebieg dla ${shoe.name} (w km):`, shoe.mileage);
+  if (newMileage !== null && !isNaN(parseFloat(newMileage))) {
+    shoe.mileage = parseFloat(newMileage);
+    saveData();
+    renderShoeTracker();
+    populateShoeSelect();
+  }
+};
 
 function populateShoeSelect() {
   ensureDefaultShoes();
