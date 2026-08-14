@@ -2370,6 +2370,41 @@ Daj odpowied\u017a w formie gotowego planu tygodniowego, z kr\u00f3tkim uzasadni
 
 let llmPromptDirty = false;
 
+function copyLLMPrompt() {
+  const textarea = document.getElementById('llm-prompt');
+  if (!textarea) return;
+  const text = textarea.value;
+  const btn = document.getElementById('copy-llm-prompt');
+
+  const showCopied = () => {
+    if (btn) {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✅ Skopiowano do schowka!';
+      btn.style.background = '#10b981';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+      }, 2500);
+    }
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(showCopied).catch(() => {
+      textarea.select();
+      document.execCommand('copy');
+      showCopied();
+    });
+  } else {
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      showCopied();
+    } catch (err) {
+      alert('Nie udało się automatycznie skopiować. Zaznacz tekst i użyj Ctrl+C / Cmd+C.');
+    }
+  }
+}
+
 function refreshLLMPrompt() {
   const textarea = document.getElementById('llm-prompt');
   if (!textarea) return;
