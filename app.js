@@ -2245,6 +2245,11 @@ function renderStrengthItem(s) {
     return `<div style="font-size:0.85rem;margin-bottom:4px">• ${ex.label || ex.name} ${setsHTML}</div>`;
   }).join('');
 
+  const hrStr = s.hr ? ` · ❤️ ${s.hr} bpm` : '';
+  const kcalStr = s.calories ? ` · 🔥 ${s.calories} kcal` : '';
+  const durStr = s.duration ? ` · ⏱ ${formatDuration(s.duration)}` : '';
+  const notesStr = s.notes ? `<br><span style="font-size:0.85rem;color:#666">${s.notes}</span>` : '';
+
   return `
     <div class="history-item">
       <div class="item-main">
@@ -2252,9 +2257,9 @@ function renderStrengthItem(s) {
         <div class="item-title">
           <span class="strength-badge">🏋️</span>
           ${sessionLabels[s.session] || s.session}
-          ${s.duration ? ` · ⏱ ${formatDuration(s.duration)}` : ''}${s.calories ? ` · 🔥 ${s.calories} kcal` : ''}
+          ${durStr}${kcalStr}${hrStr}
         </div>
-        <div class="item-details">${exercisesStr}</div>
+        <div class="item-details">${exercisesStr}${notesStr}</div>
       </div>
       <button class="item-delete" data-delete-id="${s.id}" data-delete-type="strength" title="Usuń">✕</button>
     </div>

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T12:57:00.000Z",
+  "updatedAt": "2026-08-14T11:28:00.000Z",
   "data": {
     "runs": [
       {
@@ -800,6 +800,174 @@
             ]
           }
         ]
+      },
+      {
+        "id": "str_20260813_01",
+        "date": "2026-08-13",
+        "session": "siła-a",
+        "duration": 70,
+        "calories": 474,
+        "hr": 132,
+        "notes": "Hip thrust: 6 powt. + 6x puls + 8s hold na koniec serii. Kick back: maszyna z przełożeniem. Wiosłowanie na wyciągu: dojście do 110 kg. Face pull w superserii z Landmine Press.",
+        "exercises": [
+          {
+            "name": "Hip Thrust (sztanga)",
+            "label": "Hip Thrust (sztanga)",
+            "sets": [
+              {
+                "weight": 60,
+                "reps": 6,
+                "rir": 2
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 0
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 0
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 0
+              },
+              {
+                "weight": 70,
+                "reps": 6,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "RDL (jednonóż/obunóż)",
+            "label": "RDL (jednonóż/obunóż)",
+            "sets": [
+              {
+                "weight": 40,
+                "reps": 8,
+                "rir": 2
+              },
+              {
+                "weight": 45,
+                "reps": 8,
+                "rir": 0
+              },
+              {
+                "weight": 45,
+                "reps": 8,
+                "rir": 0
+              },
+              {
+                "weight": 45,
+                "reps": 8,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "Kickback (wykopy nogi)",
+            "label": "Kickback (wykopy nogi)",
+            "sets": [
+              {
+                "weight": 50,
+                "reps": 10,
+                "rir": 2
+              },
+              {
+                "weight": 50,
+                "reps": 10,
+                "rir": 2
+              }
+            ]
+          },
+          {
+            "name": "Gorilla row",
+            "label": "Gorilla row",
+            "sets": [
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 3
+              },
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 0
+              },
+              {
+                "weight": 16,
+                "reps": 8,
+                "rir": 0
+              }
+            ]
+          },
+          {
+            "name": "Wiosłowanie na wyciągu siedząc",
+            "label": "Wiosłowanie na wyciągu siedząc",
+            "sets": [
+              {
+                "weight": 70,
+                "reps": 8,
+                "rir": 4
+              },
+              {
+                "weight": 70,
+                "reps": 8,
+                "rir": 4
+              },
+              {
+                "weight": 110,
+                "reps": 8,
+                "rir": 4
+              }
+            ]
+          },
+          {
+            "name": "Face pull / odwrotne rozpiętki",
+            "label": "Face pull / odwrotne rozpiętki",
+            "sets": [
+              {
+                "weight": 70,
+                "reps": 10,
+                "rir": 3
+              },
+              {
+                "weight": 70,
+                "reps": 10,
+                "rir": 1
+              },
+              {
+                "weight": 70,
+                "reps": 10,
+                "rir": 1
+              }
+            ]
+          },
+          {
+            "name": "Landmine Press",
+            "label": "Landmine Press",
+            "sets": [
+              {
+                "weight": 5,
+                "reps": 5,
+                "rir": 3
+              },
+              {
+                "weight": 5,
+                "reps": 5,
+                "rir": 1
+              },
+              {
+                "weight": 5,
+                "reps": 5,
+                "rir": 1
+              }
+            ]
+          }
+        ]
       }
     ],
     "foods": [
@@ -992,7 +1160,7 @@
       "śr": [
         {
           "text": "💪 Siła A (wieczorem)",
-          "done": false
+          "done": true
         }
       ],
       "cz": [
