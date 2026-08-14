@@ -6,6 +6,7 @@
         "id": "mruyobih5q76",
         "date": "2026-07-17",
         "type": "easy",
+        "shoeId": "shoe-1",
         "distance": 4.5,
         "duration": 38.56666666666667,
         "hr": 147,
@@ -16,6 +17,7 @@
         "id": "mrvvy3uizm1r",
         "date": "2026-07-21",
         "type": "easy",
+        "shoeId": "shoe-1",
         "distance": 5,
         "duration": 42.2,
         "hr": 153,
@@ -26,6 +28,7 @@
         "id": "ms7ulm55emp8",
         "date": "2026-07-27",
         "type": "easy",
+        "shoeId": "shoe-1",
         "distance": 11,
         "duration": 92.73333333333333,
         "hr": 146,
@@ -36,6 +39,7 @@
         "id": "msa6i5degzrw",
         "date": "2026-07-30",
         "type": "tempo",
+        "shoeId": "shoe-1",
         "distance": 6.5,
         "duration": 54.666666666666664,
         "hr": 153,
@@ -46,6 +50,7 @@
         "id": "msd3v07bl10l",
         "date": "2026-08-02",
         "type": "long-run",
+        "shoeId": "shoe-1",
         "distance": 12,
         "duration": 99.63333333333334,
         "hr": 145,
@@ -56,6 +61,7 @@
         "id": "run_20260804_01",
         "date": "2026-08-04",
         "type": "easy",
+        "shoeId": "shoe-1",
         "distance": 6.03,
         "duration": 50.98,
         "hr": 144,
@@ -67,6 +73,7 @@
         "id": "run_20260811_01",
         "date": "2026-08-11",
         "type": "easy",
+        "shoeId": "shoe-1",
         "distance": 7.01,
         "duration": 57.1,
         "hr": 145,
@@ -1001,11 +1008,12 @@
       {
         "id": "shoe-1",
         "name": "Asics Novablast 4",
-        "mileage": 480,
+        "initialMileage": 120,
+        "mileage": 172.04,
         "maxMileage": 600
       }
     ],
-    "updatedAt": "2026-08-14T11:36:00.000Z"
+    "updatedAt": "2026-08-14T11:38:00.000Z"
   },
   "nutritionProfile": {
     "weight": "70",

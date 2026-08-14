@@ -2390,11 +2390,22 @@ function refreshLLMPrompt() {
 // ============================================================
 //  Nowe funkcje: Odliczanie, Tracker Butów, Kalkulatory, PR
 // ============================================================
+function getShoeMileage(shoe) {
+  const base = parseFloat(shoe.initialMileage !== undefined ? shoe.initialMileage : (shoe.mileage || 120)) || 0;
+  const logged = (data.runs || []).filter(r => r.shoeId === shoe.id || (!r.shoeId && (data.shoes || []).length === 1))
+    .reduce((acc, r) => acc + (parseFloat(r.distance) || 0), 0);
+  return Math.round((base + logged) * 10) / 10;
+}
+
 function ensureDefaultShoes() {
   if (!data.shoes || !Array.isArray(data.shoes) || data.shoes.length === 0 || data.shoes.some(s => s.id === 'shoe-2' || s.id === 'shoe-3')) {
     data.shoes = [
-      { id: 'shoe-1', name: 'Asics Novablast 4', mileage: 480, maxMileage: 600 }
+      { id: 'shoe-1', name: 'Asics Novablast 4', initialMileage: 120, mileage: 172.04, maxMileage: 600 }
     ];
+  } else {
+    data.shoes.forEach(s => {
+      if (s.initialMileage === undefined) s.initialMileage = 120;
+    });
   }
 }
 
@@ -2404,9 +2415,11 @@ function renderShoeTracker() {
   if (!container) return;
 
   container.innerHTML = data.shoes.map(shoe => {
-    const pct = Math.min(100, Math.round((shoe.mileage / shoe.maxMileage) * 100));
+    const totalMileage = getShoeMileage(shoe);
+    shoe.mileage = totalMileage;
+    const pct = Math.min(100, Math.round((totalMileage / shoe.maxMileage) * 100));
     let badgeClass = 'good';
-    let statusText = 'Dobry';
+    let statusText = 'Dobry stan';
     if (pct >= 85) {
       badgeClass = 'replace';
       statusText = 'Do wymiany';
@@ -2414,22 +2427,24 @@ function renderShoeTracker() {
       badgeClass = 'warning';
       statusText = 'Używane';
     }
-    const remaining = Math.max(0, Math.round((shoe.maxMileage - shoe.mileage) * 10) / 10);
+    const remaining = Math.max(0, Math.round((shoe.maxMileage - totalMileage) * 10) / 10);
+    const inAppDist = Math.round(((data.runs || []).filter(r => r.shoeId === shoe.id || (!r.shoeId && (data.shoes || []).length === 1)).reduce((acc, r) => acc + (parseFloat(r.distance) || 0), 0)) * 10) / 10;
+    const baseDist = parseFloat(shoe.initialMileage !== undefined ? shoe.initialMileage : 120) || 0;
     return `
       <div class="shoe-card">
         <div class="shoe-header">
           <span class="shoe-name">👟 ${shoe.name}</span>
           <div style="display:flex;align-items:center;gap:6px;">
             <span class="shoe-badge ${badgeClass}">${statusText}</span>
-            <button type="button" class="item-edit" onclick="editShoeMileage('${shoe.id}')" title="Zmień przebieg" style="font-size:0.8rem;padding:2px 6px;cursor:pointer;">✎ Edytuj</button>
+            <button type="button" class="item-edit" onclick="editShoeMileage('${shoe.id}')" title="Zmień przebieg początkowy" style="font-size:0.8rem;padding:2px 6px;cursor:pointer;">✎ Baza: ${baseDist} km</button>
           </div>
         </div>
         <div class="shoe-progress-bar">
           <div class="shoe-progress-fill" style="width: ${pct}%"></div>
         </div>
         <div class="shoe-stats">
-          <span>Przebieg: <strong>${shoe.mileage} km</strong> / ${shoe.maxMileage} km (zostało ok. <strong>${remaining} km</strong>)</span>
-          <span>${pct}%</span>
+          <span>Przebieg: <strong>${totalMileage} km</strong> / ${shoe.maxMileage} km (w aplikacji: ${inAppDist} km + baza: ${baseDist} km)</span>
+          <span>${pct}% (zostało ok. <strong>${remaining} km</strong>)</span>
         </div>
       </div>
     `;
@@ -2439,9 +2454,11 @@ function renderShoeTracker() {
 window.editShoeMileage = function(shoeId) {
   const shoe = (data.shoes || []).find(s => s.id === shoeId);
   if (!shoe) return;
-  const newMileage = prompt(`Wpisz aktualny przebieg dla ${shoe.name} (w km):`, shoe.mileage);
-  if (newMileage !== null && !isNaN(parseFloat(newMileage))) {
-    shoe.mileage = parseFloat(newMileage);
+  const currentBase = parseFloat(shoe.initialMileage !== undefined ? shoe.initialMileage : 120) || 0;
+  const newBase = prompt(`Wpisz przebieg butów ${shoe.name} sprzed rejestru w aplikacji (w km):`, currentBase);
+  if (newBase !== null && !isNaN(parseFloat(newBase))) {
+    shoe.initialMileage = parseFloat(newBase);
+    shoe.mileage = getShoeMileage(shoe);
     saveData();
     renderShoeTracker();
     populateShoeSelect();
@@ -2453,7 +2470,7 @@ function populateShoeSelect() {
   const select = document.getElementById('run-shoe');
   if (!select) return;
   select.innerHTML = `<option value="">-- Wybierz buty (opcjonalnie) --</option>` +
-    data.shoes.map(s => `<option value="${s.id}">${s.name} (${s.mileage}km)</option>`).join('');
+    data.shoes.map(s => `<option value="${s.id}" selected>${s.name} (${getShoeMileage(s)}km)</option>`).join('');
 }
 
 function updateCountdownTimer() {
