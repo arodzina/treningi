@@ -1412,20 +1412,11 @@ function calcNutrition() {
   const dayLabel = isSelectedToday ? 'dziś' : selectedDate;
 
   results.innerHTML = `
-    ${goalDescription ? `<div class="nut-stat recomp-note"><span style="font-size:0.82rem;color:var(--text-muted)">${goalDescription}</span></div>` : ''}
-    <div class="nut-stat"><span>Zapotrzebowanie bazowe (BMR×${act})</span><strong>${baseNeed} kcal</strong></div>
+    <div class="nut-stat"><span>Zapotrzebowanie bazowe</span><strong>${baseNeed} kcal</strong></div>
     <div class="nut-stat"><span>${burnedLabel}</span><strong>${shownBurned > 0 ? shownBurned + ' kcal' : '—'}</strong></div>
     <div class="nut-stat nut-target"><span>🎯 Cel na ${dayLabel}</span><strong>${target} kcal</strong></div>
     <div class="nut-stat"><span>🍽 Zjedzone</span><strong>${Math.round(totals.kcal)} kcal</strong></div>
     <div class="nut-stat ${remaining >= 0 ? '' : 'nut-over'}"><span>${remaining >= 0 ? '✅ Pozostało' : '⚠️ Nadwyżka'}</span><strong>${Math.abs(Math.round(remaining))} kcal</strong></div>
-    <div class="nut-protein-block">
-      <div class="nut-stat"><span>🥩 Białko — cel</span><strong>${proteinTarget} g (2 g/kg)</strong></div>
-      <div class="nut-stat"><span>Zjedzone białko</span><strong>${Math.round(totals.protein)} g</strong></div>
-      <div class="nut-protein-bar">
-        <div class="nut-protein-fill" style="width:${proteinPct}%"></div>
-      </div>
-      <div class="nut-stat" style="font-size:0.82rem;color:var(--text-muted)"><span>${proteinRemaining > 0 ? '⬆ Brakuje' : '✅ Cel osiągnięty'}</span><strong>${proteinRemaining > 0 ? Math.round(proteinRemaining) + ' g' : ''}</strong></div>
-    </div>
   `;
   updateProfileSummary();
   // Odśwież też bilans jedzenia (makro)

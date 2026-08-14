@@ -440,6 +440,17 @@ nav {
 .nut-over { border-color: var(--coral) !important; background: rgba(244, 63, 94, 0.15) !important; }
 .nut-over strong { color: var(--coral); }
 
+.food-totals-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 768px) {
+  .food-totals-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .food-form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

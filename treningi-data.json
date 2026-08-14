@@ -1002,6 +1002,33 @@
         "fat": 6.75,
         "carbs": 24,
         "calories": 159
+      },
+      {
+        "id": "food_20260814_01",
+        "date": "2026-08-14",
+        "name": "Kanapka z twarogiem, pomidorem i masłem",
+        "protein": 13.5,
+        "fat": 10,
+        "carbs": 24,
+        "calories": 250
+      },
+      {
+        "id": "food_20260814_02",
+        "date": "2026-08-14",
+        "name": "Domowa pizza z tuńczykiem, serem i majonezem (1/2 porcji)",
+        "protein": 61,
+        "fat": 74,
+        "carbs": 143,
+        "calories": 1510
+      },
+      {
+        "id": "food_20260814_03",
+        "date": "2026-08-14",
+        "name": "Kawa czarna (2x)",
+        "protein": 0,
+        "fat": 0,
+        "carbs": 0.5,
+        "calories": 5
       }
     ],
     "shoes": [
